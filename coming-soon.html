@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Čoskoro spustíme | LumaWeb</title>
+  <meta name="description" content="Na našich sociálnych sieťach práve pracujeme. Medzitým nás nájdete na e-maile hello@lumaweb.sk alebo na hlavnej stránke."/>
+  <meta name="robots" content="noindex, follow"/>
+  <link rel="canonical" href="https://lumaweb.sk/coming-soon.html"/>
+  <link rel="icon" type="image/png" href="/favicon.png"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .cs{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;position:relative;overflow:hidden}
+    .cs .hero-grid{position:absolute;inset:0}
+    .cs::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 35%,rgba(74,126,255,.10),transparent 70%);pointer-events:none}
+    .cs-logo{display:flex;align-items:center;gap:12px;font-family:var(--ff);font-weight:800;font-size:1.8rem;letter-spacing:-.05em;margin-bottom:30px;position:relative;z-index:2}
+    .cs-logo img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(100,180,255,.85))}
+    .cs-logo em{color:var(--ac);font-style:normal}
+    .cs-inner{position:relative;z-index:2;max-width:560px}
+    .cs-inner h1{font-size:clamp(2rem,4.5vw,3.4rem);margin:16px 0 14px}
+    .cs-inner p{color:var(--mu2);font-size:1.05rem;font-weight:300;line-height:1.7;margin-bottom:34px}
+    .cs-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+<main class="cs">
+  <div class="hero-grid"></div>
+  <a href="/" class="cs-logo" aria-label="LumaWeb - Domov">
+    <img src="logo.png" alt="LumaWeb logo" width="48" height="48"/>
+    Luma<em>Web</em>
+  </a>
+  <div class="cs-inner">
+    <span class="hero-tag"><span class="hero-dot"></span>Čoskoro</span>
+    <h1>Čoskoro tu budeme</h1>
+    <p>Na našich sociálnych sieťach práve pracujeme. Medzitým nás nájdete na e-maile alebo na hlavnej stránke.</p>
+    <div class="cs-actions">
+      <a href="mailto:hello@lumaweb.sk" class="btn-primary">Napíšte nám</a>
+      <a href="/" class="btn-ghost">Späť na web</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>
