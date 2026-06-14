@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://lumaweb.sk/sitemap.xml
-
-# Crawl-delay for polite bots
-Crawl-delay: 1
