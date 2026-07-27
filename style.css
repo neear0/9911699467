@@ -85,9 +85,15 @@ nav{
   font-style:normal;
 }
 .nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{color:var(--mu2);font-size:.87rem;letter-spacing:.02em;transition:color .2s}
+.nav-links a{color:var(--mu2);font-size:.87rem;letter-spacing:.02em;transition:color .2s;position:relative}
 .nav-links a:hover{color:var(--tx)}
-.nav-cta{background:linear-gradient(135deg,#4a7eff,#3d6ce8);color:#fff;padding:9px 22px;border-radius:100px;font-size:.83rem;font-weight:600;border:none;transition:all .3s;text-shadow:0 1px 2px rgba(0,0,0,.15)}
+/* the page you are on stays lit and underscored */
+.nav-links a[aria-current="page"]{color:var(--ac)}
+.nav-links a[aria-current="page"]::after{
+  content:'';position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--ac);
+}
+/* CTAs are real links now that the sections live on their own pages */
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#4a7eff,#3d6ce8);color:#fff;padding:9px 22px;border-radius:100px;font-size:.83rem;font-weight:600;border:none;transition:all .3s;text-shadow:0 1px 2px rgba(0,0,0,.15)}
 .nav-cta:hover{box-shadow:0 8px 28px rgba(74,126,255,.5);transform:translateY(-1px)}
 .nav-right{display:flex;align-items:center;gap:16px}
 .lang-switch{color:var(--mu2);font-size:.85rem;font-weight:500;padding:6px 12px;border:1px solid var(--bdr);border-radius:6px;transition:all .2s}
@@ -179,11 +185,28 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 .fb2{bottom:-22px;left:14px;animation-delay:1.5s}
 
 
-.marquee{border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);overflow:hidden;padding:14px 0;background:var(--sur)}
-.marquee-track{display:flex;gap:44px;width:max-content;animation:mq 28s linear infinite}
-.marquee-item{display:flex;align-items:center;gap:9px;color:var(--mu);font-size:.79rem;letter-spacing:.05em;white-space:nowrap}
-.marquee-item svg{stroke:var(--mu);fill:none;width:13px;height:13px;stroke-width:1.8;opacity:.6}
-.marquee-dot{width:3px;height:3px;border-radius:50%;background:var(--mu);opacity:.3;flex-shrink:0}
+/* page header — the compact banner every subpage opens with, in place of the
+   full-height hero the home page keeps */
+.page-head{
+  padding:150px 64px 56px;border-bottom:1px solid var(--bdr);position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 90% at 20% 0%,rgba(74,126,255,.07),transparent 60%);
+}
+.page-head-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.page-head h1{
+  font-family:var(--ff);font-size:clamp(1.9rem,4vw,3.1rem);font-weight:800;
+  letter-spacing:-.03em;line-height:1.07;margin-bottom:14px;
+}
+.page-head p{color:var(--mu2);font-size:1rem;font-weight:300;line-height:1.78;max-width:560px}
+/* first section after the banner already has the rule above it */
+.page-head + section,.page-head + div{border-top:none}
+
+/* home teaser that sends people into the service subpage */
+.home-cta{padding:96px 64px;border-top:1px solid var(--bdr);text-align:center;
+  background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(74,126,255,.07),transparent 65%)}
+.home-cta-inner{max-width:640px;margin:0 auto}
+.home-cta h2{font-family:var(--ff);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+.home-cta p{color:var(--mu2);font-size:.97rem;font-weight:300;line-height:1.78;margin-bottom:30px}
+.home-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
 
 .s-tag{display:inline-flex;align-items:center;gap:10px;font-size:.71rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin-bottom:12px}
@@ -212,7 +235,7 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 
 .process{padding:100px 64px;border-top:1px solid var(--bdr);background:var(--sur)}
 .process-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:360px 1fr;gap:80px}
-.process-left h2{font-family:var(--ff);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+.process-left h1,.process-left h2{font-family:var(--ff);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
 .process-left p{color:var(--mu2);font-size:.92rem;font-weight:300;line-height:1.78}
 .steps{display:flex;flex-direction:column}
 .step{display:grid;grid-template-columns:50px 1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--bdr)}
@@ -234,7 +257,7 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 
 .services{padding:100px 64px;max-width:1200px;margin:0 auto}
 .services-hd{margin-bottom:52px}
-.services-hd h2{font-family:var(--ff);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
+.services-hd h1,.services-hd h2{font-family:var(--ff);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
 .services-hd .sub{color:var(--mu2);font-size:.95rem;font-weight:300;line-height:1.78;max-width:500px}
 .sv-list{
   display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
@@ -263,7 +286,7 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 .pricing{padding:100px 64px;border-top:1px solid var(--bdr);background:var(--sur)}
 .pricing-inner{max-width:1200px;margin:0 auto}
 .pricing-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;gap:40px}
-.pricing-hd h2{font-family:var(--ff);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.pricing-hd h1,.pricing-hd h2{font-family:var(--ff);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1}
 .pricing-hd .sub{color:var(--mu2);font-size:.9rem;font-weight:300;max-width:270px;line-height:1.7}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
 .price-card{
@@ -291,7 +314,7 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 .price-feats li.on svg{stroke:var(--ac)}
 .price-feats li.off{opacity:.28}
 .price-feats li.off svg{stroke:var(--mu)}
-.price-btn{width:100%;padding:12px;border-radius:100px;font-size:.85rem;transition:all .3s;border:1px solid var(--bdr2);background:transparent;color:var(--tx)}
+.price-btn{display:flex;align-items:center;justify-content:center;width:100%;padding:12px;border-radius:100px;font-size:.85rem;transition:all .3s;border:1px solid var(--bdr2);background:transparent;color:var(--tx)}
 .price-btn:hover{border-color:var(--mu2)}
 .price-btn.featured{background:linear-gradient(135deg,#4a7eff,#3d6ce8);color:#fff;border:none;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,.15)}
 .price-btn.featured:hover{box-shadow:0 10px 36px rgba(74,126,255,.5)}
@@ -299,7 +322,7 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 
 .faq{padding:100px 64px;max-width:1200px;margin:0 auto}
 .faq-inner{display:grid;grid-template-columns:300px 1fr;gap:80px;align-items:start}
-.faq-left h2{font-family:var(--ff);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+.faq-left h1,.faq-left h2{font-family:var(--ff);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
 .faq-left p{color:var(--mu2);font-size:.9rem;font-weight:300;line-height:1.78}
 .faq-list{display:flex;flex-direction:column}
 .faq-item{border-bottom:1px solid var(--bdr)}
@@ -321,7 +344,7 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
   background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(74,126,255,.06),transparent 60%);
 }
 .contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.contact-left h2{font-family:var(--ff);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:14px}
+.contact-left h1,.contact-left h2{font-family:var(--ff);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:14px}
 .contact-left p{color:var(--mu2);font-weight:300;font-size:.95rem;line-height:1.78;margin-bottom:28px}
 .contact-info{display:flex;flex-direction:column;gap:14px}
 .c-row{display:flex;align-items:center;gap:10px;font-size:.9rem}
@@ -379,6 +402,7 @@ footer{border-top:1px solid var(--bdr);padding:32px 64px;display:flex;justify-co
 
 .sticky-cta{
   display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:150;
+  align-items:center;justify-content:center;
   background:linear-gradient(135deg,#4a7eff,#3d6ce8);color:#fff;padding:13px 28px;border-radius:100px;
   font-weight:600;font-size:.88rem;border:none;text-shadow:0 1px 2px rgba(0,0,0,.15);
   box-shadow:0 8px 32px rgba(74,126,255,.6);white-space:nowrap;transition:opacity .3s;
@@ -387,7 +411,19 @@ footer{border-top:1px solid var(--bdr);padding:32px 64px;display:flex;justify-co
 
 @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.65)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+}
+
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--ac);outline-offset:3px;
+}
 
 
 @media(min-width:1400px){
@@ -447,8 +483,10 @@ footer{border-top:1px solid var(--bdr);padding:32px 64px;display:flex;justify-co
   .form-row{grid-template-columns:1fr}
   footer{flex-direction:column;gap:16px;text-align:center;padding:24px 24px 80px}
   .footer-links{flex-wrap:wrap;justify-content:center}
-  .sticky-cta{display:block}
+  .sticky-cta{display:inline-flex}
   .contact{padding-bottom:80px}
+  .page-head{padding:112px 24px 44px}
+  .home-cta{padding:60px 24px}
 }
 
 @media(max-width:480px){
@@ -493,6 +531,8 @@ footer{border-top:1px solid var(--bdr);padding:32px 64px;display:flex;justify-co
   .price-amount{font-size:2.8rem}
   .price-feats li{font-size:.82rem}
   .sticky-cta{font-size:.85rem;padding:14px 20px}
+  .page-head{padding:104px 16px 40px}
+  .home-cta{padding:50px 16px}
 }
 
 @media(max-width:360px){

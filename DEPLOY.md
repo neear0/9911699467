@@ -59,23 +59,63 @@ Pred pushom skontroluj, že `git status` **nehlási zmazaný `CNAME`** ani `en/`
 
 ## Štruktúra
 
-| Súbor | Čo to je |
+Od 27. 7. 2026 to **nie je one-page** — každá sekcia má vlastnú URL.
+
+| URL | Súbor | Obsah |
+|---|---|---|
+| `/` | `index.html` | hero + prístup + záverečná CTA |
+| `/proces/` | `proces/index.html` | päť krokov |
+| `/sluzby/` | `sluzby/index.html` | šesť služieb |
+| `/cennik/` | `cennik/index.html` | tri balíčky |
+| `/faq/` | `faq/index.html` | otázky (nesie FAQPage schema) |
+| `/kontakt/` | `kontakt/index.html` | kontakt + formulár |
+
+Anglická vetva je zrkadlom pod `/en/`: `/en/`, `/en/process/`, `/en/services/`,
+`/en/pricing/`, `/en/faq/`, `/en/contact/`. Slugy sú anglické, takže hreflang
+páruje 1:1.
+
+| Ostatné | Čo to je |
 |---|---|
-| `index.html` | hlavná SK stránka |
-| `en/index.html` | anglická verzia (`/en/`) |
 | `coming-soon.html`, `en/coming-soon.html` | placeholder pre socky, `noindex` |
-| `style.css` | všetky štýly |
-| `ui.js` | interakcie |
-| `hero-canvas.js` | canvas animácia v hero sekcii |
-| `sitemap.xml`, `robots.txt` | SEO |
+| `style.css` | všetky štýly (zdieľané všetkými stránkami) |
+| `ui.js` | nav, FAQ akordeón, odoslanie formulára, rok v päte |
+| `hero-canvas.js` | canvas animácia — načítava sa **len na domovských stránkach** |
+| `sitemap.xml`, `robots.txt` | SEO — sitemap má 12 URL s hreflang |
 | `CNAME` | **nemazať** — drží doménu |
 | `og-image.jpg` | OG náhľad (1.4 MB — pokojne skomprimovať) |
+
+### ⚠️ Navigácia a pätička sú v každom súbore zvlášť
+
+Nie je tu žiadny build ani šablóny. Keď meníš odkaz v navigácii alebo čokoľvek
+v pätičke, **musíš to spraviť v každom z 12 súborov**. Kontrola, či niečo
+nezostalo pozadu:
+
+```bash
+grep -rc "nav-links" --include=index.html .    # každý musí vrátiť 1
+```
+
+### Cesty sú absolútne
+
+Odkazy aj assety idú cez `/` (`/style.css`, `/sluzby/`). To znamená, že
+**otvorenie súboru priamo z disku nebude fungovať** — nenačíta sa CSS ani
+prelinkovanie. Na lokálny náhľad si spusť server:
+
+```bash
+cd C:\Users\Zemak\Desktop\biznis\moje\lumaweb-main
+npx serve -l 8099          # potom http://localhost:8099
+```
 
 ## Kontroly po deployi
 
 ```bash
-curl -sI https://lumaweb.sk/ | head -1        # čakaj: HTTP/2 200
-curl -sI https://lumaweb.sk/en/ | head -1     # čakaj: HTTP/2 200
+for u in / /proces/ /sluzby/ /cennik/ /faq/ /kontakt/ \
+         /en/ /en/process/ /en/services/ /en/pricing/ /en/faq/ /en/contact/; do
+  printf '%s  ' "$u"; curl -o /dev/null -s -w '%{http_code}\n' "https://lumaweb.sk$u"
+done
 ```
 
-Ak vráti 404 so stránkou „Site not found · GitHub Pages" → je to doména, viď vyššie.
+Všetkých 12 musí vrátiť 200. Ak vráti 404 so stránkou „Site not found ·
+GitHub Pages" → je to doména, viď vyššie.
+
+Po nasadení **znovu odošli sitemap v Search Console** — pribudlo 10 nových URL
+a staré kotvy (`/#cennik` atď.) už neexistujú.
