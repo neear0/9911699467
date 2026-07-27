@@ -79,14 +79,20 @@ async function submitForm() {
 }
 window.submitForm = submitForm;
 
+// the contact section is #kontakt on the SK page and #contact on the EN one
+function contactSection() {
+  return document.getElementById('kontakt') || document.getElementById('contact');
+}
+
 function scrollToContact() {
-  document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+  const el = contactSection();
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 window.scrollToContact = scrollToContact;
 
 (function initStickyCta() {
   const cta     = document.querySelector('.sticky-cta');
-  const kontakt = document.getElementById('kontakt');
+  const kontakt = contactSection();
   if (!cta || !kontakt) return;
 
   const obs = new IntersectionObserver(entries => {
