@@ -213,6 +213,80 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 .s-tag::before{content:'';width:16px;height:1px;background:var(--ac)}
 
 
+/* ============================================================
+   plain-language blocks — short lines, no jargon, for readers
+   who do not know what SEO is
+   ============================================================ */
+.block{padding:100px 64px;border-top:1px solid var(--bdr)}
+.block-inner{max-width:1200px;margin:0 auto}
+.block-hd{margin-bottom:44px;max-width:640px}
+.block-hd h2{font-family:var(--ff);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
+.block-hd p{color:var(--mu2);font-size:.97rem;font-weight:300;line-height:1.78}
+.block-note{color:var(--mu);font-size:.82rem;font-weight:300;line-height:1.7;margin-top:26px;max-width:620px}
+
+/* the three-beat explainer: search -> ranking -> click */
+.beats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.beat{background:var(--sur);border:1px solid var(--bdr);border-radius:20px;padding:30px 26px;position:relative}
+.beat-k{font-family:var(--ff);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
+.beat h3{font-family:var(--ff);font-size:1.22rem;font-weight:700;letter-spacing:-.02em;margin-bottom:10px;line-height:1.2}
+.beat p{color:var(--mu2);font-size:.9rem;font-weight:300;line-height:1.7}
+.beat-q{
+  display:inline-block;margin-top:14px;padding:7px 13px;border-radius:100px;
+  background:rgba(126,179,255,.07);border:1px solid rgba(126,179,255,.16);
+  color:var(--ac);font-size:.8rem;
+}
+
+/* short benefit tiles — headline first, one line of proof under it */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tile{background:var(--sur);border:1px solid var(--bdr);border-radius:18px;padding:26px 22px;transition:border-color .3s,transform .3s var(--ease)}
+.tile:hover{border-color:rgba(126,179,255,.24);transform:translateY(-3px)}
+.tile h3{font-family:var(--ff);font-size:1.02rem;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.tile p{color:var(--mu2);font-size:.86rem;font-weight:300;line-height:1.65}
+
+/* SEO against paid ads, side by side */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.vs-col{background:var(--sur);border:1px solid var(--bdr);border-radius:20px;overflow:hidden}
+.vs-col.win{border-color:rgba(126,179,255,.26);background:linear-gradient(160deg,rgba(74,126,255,.07),var(--sur))}
+.vs-hd{padding:20px 24px;border-bottom:1px solid var(--bdr);font-family:var(--ff);font-weight:700;font-size:1.05rem}
+.vs-col.win .vs-hd{color:var(--ac)}
+.vs-row{display:flex;gap:12px;padding:14px 24px;border-bottom:1px solid var(--bdr);align-items:flex-start}
+.vs-row:last-child{border-bottom:none}
+.vs-lbl{color:var(--mu);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;width:118px;flex-shrink:0;padding-top:2px}
+.vs-val{color:var(--tx);font-size:.9rem;font-weight:300;line-height:1.6}
+
+/* what happens after you get in touch / when to expect results */
+.track{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:none}
+.track-item{background:var(--sur);border:1px solid var(--bdr);border-radius:18px;padding:26px 22px;position:relative}
+.track-item::before{content:'';position:absolute;top:0;left:24px;right:24px;height:2px;background:linear-gradient(90deg,var(--ac2),transparent)}
+.track-when{font-family:var(--ff);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin-bottom:12px}
+.track-item h3{font-family:var(--ff);font-size:1.02rem;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.track-item p{color:var(--mu2);font-size:.86rem;font-weight:300;line-height:1.65}
+
+/* the punchy "what we usually find" list */
+.finds{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.find{
+  display:flex;align-items:flex-start;gap:14px;padding:18px 20px;
+  background:var(--sur);border:1px solid var(--bdr);border-radius:14px;
+  transition:border-color .3s;
+}
+.find:hover{border-color:rgba(126,179,255,.22)}
+.find svg{stroke:var(--gold);fill:none;width:17px;height:17px;stroke-width:2;flex-shrink:0;margin-top:2px}
+.find b{display:block;font-weight:600;font-size:.94rem;margin-bottom:3px}
+.find span{color:var(--mu2);font-size:.84rem;font-weight:300;line-height:1.6}
+
+/* Scroll reveal. Hidden only once JS has confirmed it can reveal again — the
+   resting state without the .js flag is fully visible, so a script that never
+   runs can't leave a section blank. */
+.js .reveal{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+}
+
+
 .approach{padding:100px 64px;border-top:1px solid var(--bdr)}
 .approach-inner{max-width:1200px;margin:0 auto}
 .approach-hd{margin-bottom:48px}
@@ -436,6 +510,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 
 @media(max-width:1100px){
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .track{grid-template-columns:repeat(2,1fr)}
   .sv-list{grid-template-columns:repeat(2,1fr)}
   .approach-grid{grid-template-columns:repeat(2,1fr)}
   .price-grid{grid-template-columns:repeat(2,1fr);gap:16px}
@@ -487,6 +563,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .contact{padding-bottom:80px}
   .page-head{padding:112px 24px 44px}
   .home-cta{padding:60px 24px}
+  .block{padding:60px 24px}
+  .beats{grid-template-columns:1fr}
+  .vs{grid-template-columns:1fr}
+  .finds{grid-template-columns:1fr}
+  .track{grid-template-columns:1fr}
+  .vs-lbl{width:104px}
 }
 
 @media(max-width:480px){
@@ -533,6 +615,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .sticky-cta{font-size:.85rem;padding:14px 20px}
   .page-head{padding:104px 16px 40px}
   .home-cta{padding:50px 16px}
+  .block{padding:50px 16px}
+  .tiles{grid-template-columns:1fr}
+  .beat{padding:24px 20px}
+  .tile{padding:22px 18px}
+  .track-item{padding:22px 18px}
+  .vs-row{padding:12px 18px;flex-direction:column;gap:3px}
+  .vs-lbl{width:auto}
+  .vs-hd{padding:16px 18px}
 }
 
 @media(max-width:360px){

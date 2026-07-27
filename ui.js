@@ -83,3 +83,33 @@ window.submitForm = submitForm;
   const el = document.getElementById('yr');
   if (el) el.textContent = new Date().getFullYear();
 })();
+
+/* Reveal blocks as they scroll in. The `js` flag goes on <html> first: the
+   stylesheet only hides .reveal once that class is present, so if this script
+   never runs the content simply stays visible. */
+(function initReveal() {
+  const targets = document.querySelectorAll('.reveal');
+  if (!targets.length) return;
+
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still || !('IntersectionObserver' in window)) return;
+
+  document.documentElement.classList.add('js');
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      obs.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+
+  // stagger siblings so a row of tiles arrives one after another
+  let last = null, step = 0;
+  targets.forEach((el) => {
+    if (el.parentElement !== last) { last = el.parentElement; step = 0; }
+    el.style.transitionDelay = (step * 70) + 'ms';
+    step = Math.min(step + 1, 5);
+    obs.observe(el);
+  });
+})();
