@@ -93,6 +93,8 @@ void main(){
   ['T','RS','PX','SC','RO','PR','SF','SS','SW','SI','C1','C2','C3']
     .forEach(n => { U[n] = gl.getUniformLocation(prog, n); });
 
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+
   function resize() {
     const w   = hero.clientWidth  || window.innerWidth;
     const h   = hero.clientHeight || window.innerHeight;
@@ -102,6 +104,8 @@ void main(){
     canvas.style.width  = w + 'px';
     canvas.style.height = h + 'px';
     gl.viewport(0, 0, canvas.width, canvas.height);
+    // in reduced motion there is no running loop to repaint after a resize
+    if (still.matches) requestAnimationFrame(draw);
   }
   resize();
   setTimeout(resize, 100);
@@ -127,7 +131,8 @@ void main(){
     gl.uniform4f(U.C3, 0.035, 0.035, 0.09,  1);
 
     gl.drawArrays(gl.TRIANGLES, 0, 6);
-    requestAnimationFrame(draw);
+    // reduced motion: paint one still frame of the field, no loop
+    if (!still.matches) requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
 })();
