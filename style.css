@@ -675,6 +675,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .vs-lbl{width:104px}
 }
 
+/* The nav is fixed, so <header> has no height and whatever comes first in
+   <main> has to clear the bar itself. `.page-head` and `.hero` already do;
+   these four are section types that used to sit mid-page before the site was
+   split into real pages, so their top padding was never meant to do this job.
+   Measured bar height: 63px at 900px, 59px at 480px. */
+@media(max-width:900px){
+  main > .services:first-child,
+  main > .process:first-child,
+  main > .faq:first-child,
+  main > .contact:first-child{padding-top:100px}
+}
+
 @media(max-width:640px){
   /* The bar carried logo + EN + a long CTA + the menu button, which together
      are wider than a phone; the overflow pushed the menu button off screen and
