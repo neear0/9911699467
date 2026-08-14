@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>How SEO Optimization Works – Five Steps | LumaWeb</title>
+  <title>How SEO Optimization Works in Five Steps | LumaWeb</title>
   <meta name="description" content="A documented five-step SEO process: website analysis, keyword research, on-page optimization, content creation and continuous monitoring of results."/>
   <meta name="author" content="LumaWeb"/>
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
@@ -17,7 +17,7 @@
   <meta property="og:locale" content="en_US"/>
   <meta property="og:locale:alternate" content="sk_SK"/>
   <meta property="og:site_name" content="LumaWeb"/>
-  <meta property="og:title" content="How SEO Optimization Works – Five Steps | LumaWeb"/>
+  <meta property="og:title" content="How SEO Optimization Works in Five Steps | LumaWeb"/>
   <meta property="og:description" content="A documented five-step SEO process: website analysis, keyword research, on-page optimization, content creation and continuous monitoring of results."/>
   <meta property="og:url" content="https://lumaweb.sk/en/process/"/>
   <meta property="og:image" content="https://lumaweb.sk/og-image.jpg"/>
@@ -26,7 +26,7 @@
   <meta property="og:image:alt" content="LumaWeb"/>
 
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="How SEO Optimization Works – Five Steps | LumaWeb"/>
+  <meta name="twitter:title" content="How SEO Optimization Works in Five Steps | LumaWeb"/>
   <meta name="twitter:description" content="A documented five-step SEO process: website analysis, keyword research, on-page optimization, content creation and continuous monitoring of results."/>
   <meta name="twitter:image" content="https://lumaweb.sk/og-image.jpg"/>
 
@@ -40,7 +40,7 @@
   "@type": "WebPage",
   "@id": "https://lumaweb.sk/en/process/#webpage",
   "url": "https://lumaweb.sk/en/process/",
-  "name": "How SEO Optimization Works – Five Steps | LumaWeb",
+  "name": "How SEO Optimization Works in Five Steps | LumaWeb",
   "description": "A documented five-step SEO process: website analysis, keyword research, on-page optimization, content creation and continuous monitoring of results.",
   "isPartOf": {
     "@id": "https://lumaweb.sk/#website"
@@ -73,10 +73,8 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" href="/style.css" as="style"/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/fonts.css"/>
   <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
@@ -89,9 +87,10 @@
     </div>
     Luma<em>Web</em>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/en/web-development/">Web development</a></li>
+    <li><a href="/en/services/">SEO &amp; GEO</a></li>
     <li><a href="/en/process/" aria-current="page">Process</a></li>
-    <li><a href="/en/services/">Services</a></li>
     <li><a href="/en/pricing/">Pricing</a></li>
     <li><a href="/en/faq/">FAQ</a></li>
     <li><a href="/en/contact/">Contact</a></li>
@@ -99,6 +98,10 @@
   <div class="nav-right">
     <a href="/" class="lang-switch" aria-label="Prepnúť na slovenčinu">SK</a>
     <a href="/en/contact/" class="nav-cta">Free audit</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+      <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
   </div>
 </nav>
 </header>
@@ -166,7 +169,7 @@
         <p>Want to continue? We agree the scope. Not interested? The audit is yours to keep.</p>
       </div>
     </div>
-    <p class="block-note reveal">The audit is free and comes with no obligation — even if you decide to do the SEO yourself.</p>
+    <p class="block-note reveal">The audit is free and comes with no obligation, even if you decide to do the SEO yourself.</p>
   </div>
 </section>
 
@@ -185,12 +188,12 @@
         <p>Fixing errors and the technical state. Google has to crawl the site again.</p>
       </div>
       <div class="track-item reveal">
-        <div class="track-when">Months 2–3</div>
+        <div class="track-when">Months 2 to 3</div>
         <h3>First movement</h3>
         <p>Rankings start shifting, usually on less competitive terms first.</p>
       </div>
       <div class="track-item reveal">
-        <div class="track-when">Months 4–6</div>
+        <div class="track-when">Months 4 to 6</div>
         <h3>Visible growth</h3>
         <p>Organic traffic grows enough that you no longer need to squint at it.</p>
       </div>
@@ -233,7 +236,7 @@
       <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
     </a>
   </div>
-  <div class="footer-copy">&copy; <span id="yr"></span> LumaWeb</div>
+  <div class="footer-copy">&copy; <span id="yr"></span> LumaWeb &middot; <a href="/en/privacy/">Privacy Policy</a></div>
 </footer>
 
 <script src="/ui.js" defer></script>

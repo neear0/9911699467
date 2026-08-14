@@ -61,38 +61,54 @@ Pred pushom skontroluj, že `git status` **nehlási zmazaný `CNAME`** ani `en/`
 
 Od 27. 7. 2026 to **nie je one-page** — každá sekcia má vlastnú URL.
 
+Od 14. 8. 2026 vedie web **tvorbu webov** ako hlavnú službu, SEO a GEO je druhý
+pilier. Frázu „SEO služby Slovensko“ prevzala `/sluzby/` z domovskej stránky —
+neoptimalizuj domovskú späť na SEO výrazy, prišiel by si o obe.
+
 | URL | Súbor | Obsah |
 |---|---|---|
-| `/` | `index.html` | hero + prístup + záverečná CTA |
+| `/` | `index.html` | hero + dva piliere + porovnanie SEO vs. reklama + prístup |
+| `/tvorba-webov/` | `tvorba-webov/index.html` | hlavná služba: weby, e-shopy, aplikácie |
+| `/sluzby/` | `sluzby/index.html` | SEO a GEO (nesie cielenie na „SEO služby Slovensko“) |
 | `/proces/` | `proces/index.html` | päť krokov |
-| `/sluzby/` | `sluzby/index.html` | šesť služieb |
-| `/cennik/` | `cennik/index.html` | tri balíčky |
+| `/cennik/` | `cennik/index.html` | web + SEO/GEO + starostlivosť, každá sekcia s ponukou na mieru |
 | `/faq/` | `faq/index.html` | otázky (nesie FAQPage schema) |
 | `/kontakt/` | `kontakt/index.html` | kontakt + formulár |
+| `/ochrana-osobnych-udajov/` | `ochrana-osobnych-udajov/index.html` | GDPR, povinné kvôli formuláru |
 
-Anglická vetva je zrkadlom pod `/en/`: `/en/`, `/en/process/`, `/en/services/`,
-`/en/pricing/`, `/en/faq/`, `/en/contact/`. Slugy sú anglické, takže hreflang
-páruje 1:1.
+Anglická vetva je zrkadlom pod `/en/`: `/en/`, `/en/web-development/`,
+`/en/services/`, `/en/process/`, `/en/pricing/`, `/en/faq/`, `/en/contact/`,
+`/en/privacy/`. Slugy sú anglické, takže hreflang páruje 1:1.
 
 | Ostatné | Čo to je |
 |---|---|
+| `404.html` | vlastná 404, GitHub Pages ju servuje pre všetky neznáme cesty, preto je dvojjazyčná a `noindex` |
 | `coming-soon.html`, `en/coming-soon.html` | placeholder pre socky, `noindex` |
 | `style.css` | všetky štýly (zdieľané všetkými stránkami) |
-| `ui.js` | nav, FAQ akordeón, odoslanie formulára, rok v päte |
+| `fonts.css` + `fonts/*.woff2` | **self-hostované písma** — nikdy sem nevracaj `<link>` na `fonts.googleapis.com`, zásady ochrany údajov tvrdia, že web nevolá žiadnu tretiu stranu |
+| `ui.js` | mobilné menu, FAQ akordeón, odoslanie formulára, rok v päte |
 | `hero-canvas.js` | canvas animácia — načítava sa **len na domovských stránkach** |
-| `sitemap.xml`, `robots.txt` | SEO — sitemap má 12 URL s hreflang |
+| `sitemap.xml`, `robots.txt` | SEO — sitemap má 16 URL s hreflang |
 | `CNAME` | **nemazať** — drží doménu |
 | `og-image.jpg` | OG náhľad (1.4 MB — pokojne skomprimovať) |
 
 ### ⚠️ Navigácia a pätička sú v každom súbore zvlášť
 
 Nie je tu žiadny build ani šablóny. Keď meníš odkaz v navigácii alebo čokoľvek
-v pätičke, **musíš to spraviť v každom z 12 súborov**. Kontrola, či niečo
-nezostalo pozadu:
+v pätičke, **musíš to spraviť v každom zo 17 súborov s navigáciou**. Kontrola,
+či niečo nezostalo pozadu:
 
 ```bash
 grep -rc "nav-links" --include=index.html .    # každý musí vrátiť 1
+grep -rL "nav-toggle" --include="*.html" .     # len obe coming-soon.html
 ```
+
+### Mobilné menu
+
+Pod 900 px sa vodorovná navigácia skryje a jediná cesta na ostatné stránky je
+tlačidlo `.nav-toggle`. Pod 640 px sa navyše skrýva `.nav-cta`, lebo bar sa
+inak na telefón nezmestil a vytláčal tlačidlo menu mimo obrazovku. Konverznú
+cestu drží lepkavá lišta dole plus položka Kontakt v menu.
 
 ### Cesty sú absolútne
 
@@ -108,14 +124,16 @@ npx serve -l 8099          # potom http://localhost:8099
 ## Kontroly po deployi
 
 ```bash
-for u in / /proces/ /sluzby/ /cennik/ /faq/ /kontakt/ \
-         /en/ /en/process/ /en/services/ /en/pricing/ /en/faq/ /en/contact/; do
+for u in / /tvorba-webov/ /sluzby/ /proces/ /cennik/ /faq/ /kontakt/ \
+         /ochrana-osobnych-udajov/ \
+         /en/ /en/web-development/ /en/services/ /en/process/ /en/pricing/ \
+         /en/faq/ /en/contact/ /en/privacy/; do
   printf '%s  ' "$u"; curl -o /dev/null -s -w '%{http_code}\n' "https://lumaweb.sk$u"
 done
 ```
 
-Všetkých 12 musí vrátiť 200. Ak vráti 404 so stránkou „Site not found ·
+Všetkých 16 musí vrátiť 200. Ak vráti 404 so stránkou „Site not found ·
 GitHub Pages" → je to doména, viď vyššie.
 
-Po nasadení **znovu odošli sitemap v Search Console** — pribudlo 10 nových URL
+Po nasadení **znovu odošli sitemap v Search Console** — pribudli nové URL
 a staré kotvy (`/#cennik` atď.) už neexistujú.

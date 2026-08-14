@@ -96,6 +96,21 @@ nav{
 .nav-cta{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#4a7eff,#3d6ce8);color:#fff;padding:9px 22px;border-radius:100px;font-size:.83rem;font-weight:600;border:none;transition:all .3s;text-shadow:0 1px 2px rgba(0,0,0,.15)}
 .nav-cta:hover{box-shadow:0 8px 28px rgba(74,126,255,.5);transform:translateY(-1px)}
 .nav-right{display:flex;align-items:center;gap:16px}
+
+/* Mobile menu trigger. Hidden on desktop; below 900px it is the only way to
+   reach anything other than the home page and the contact CTA, because the
+   horizontal link list does not fit there. */
+.nav-toggle{
+  display:none;align-items:center;justify-content:center;
+  width:38px;height:38px;padding:0;
+  background:transparent;border:1px solid var(--bdr);border-radius:9px;
+  color:var(--mu2);cursor:pointer;transition:color .2s,border-color .2s;
+}
+.nav-toggle:hover{color:var(--tx);border-color:var(--ac)}
+.nav-toggle svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.nav-toggle .ico-close{display:none}
+nav.open .nav-toggle .ico-open{display:none}
+nav.open .nav-toggle .ico-close{display:block}
 .lang-switch{color:var(--mu2);font-size:.85rem;font-weight:500;padding:6px 12px;border:1px solid var(--bdr);border-radius:6px;transition:all .2s}
 .lang-switch:hover{color:var(--tx);border-color:var(--ac);background:rgba(74,126,255,.1)}
 
@@ -238,10 +253,54 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 
 /* short benefit tiles — headline first, one line of proof under it */
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+/* Same reason as .sv-list.two: a pair of tiles in a four-column grid would sit
+   in the left half with two empty cells beside them. */
+.tiles.two{grid-template-columns:repeat(2,1fr)}
 .tile{background:var(--sur);border:1px solid var(--bdr);border-radius:18px;padding:26px 22px;transition:border-color .3s,transform .3s var(--ease)}
 .tile:hover{border-color:rgba(126,179,255,.24);transform:translateY(-3px)}
 .tile h3{font-family:var(--ff);font-size:1.02rem;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
 .tile p{color:var(--mu2);font-size:.86rem;font-weight:300;line-height:1.65}
+
+/* ---------------------------------------------------------------
+   The two service pillars on the home page.
+
+   Deliberately NOT two cards: a pair of boxes in a grid built for three
+   left an empty cell beside them and read as unfinished. This is one
+   panel split by a hairline, so it always fills its row and carries more
+   substance per side than a card would.
+
+   It lives INSIDE .services, which already supplies the 1200px column and
+   the 64px side padding every other section uses. Do not give it its own
+   width or move it outside that section: full-bleed made it read as
+   stretched and out of family with the rest of the page.
+   --------------------------------------------------------------- */
+.pillars{
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--sur);border:1px solid var(--bdr);border-radius:20px;overflow:hidden;
+}
+.pillar{padding:34px 32px 32px;position:relative;transition:background .35s var(--ease)}
+.pillar + .pillar{border-left:1px solid var(--bdr)}
+.pillar:hover{background:rgba(126,179,255,.022)}
+.pillar-idx{
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ac);margin-bottom:16px;display:block;
+}
+.pillar h3{
+  font-family:var(--ff);font-size:clamp(1.25rem,2vw,1.55rem);font-weight:700;
+  letter-spacing:-.02em;line-height:1.15;margin-bottom:13px;
+}
+.pillar > p{color:var(--mu2);font-size:.92rem;font-weight:300;line-height:1.78;margin-bottom:24px}
+.pillar-list{list-style:none;display:grid;gap:10px;margin-bottom:28px}
+.pillar-list li{
+  display:flex;gap:11px;align-items:baseline;
+  font-size:.87rem;color:var(--mu2);font-weight:300;
+}
+.pillar-list li::before{
+  content:'';width:5px;height:5px;border-radius:50%;background:var(--ac);
+  flex:0 0 auto;transform:translateY(-2px);
+}
+.pillar-link{font-size:.85rem;color:var(--ac);font-weight:500;letter-spacing:-.01em}
+.pillar-link:hover{text-decoration:underline}
 
 /* SEO against paid ads, side by side */
 .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -336,6 +395,9 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 .sv-list{
   display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
 }
+/* Four items in a three-column grid leave one orphan on a second row. Pages
+   with an even count opt into two columns so the last row is always full. */
+.sv-list.two{grid-template-columns:repeat(2,1fr)}
 .sv-item{
   display:flex;flex-direction:column;gap:16px;
   padding:28px 24px;background:var(--sur);border:1px solid var(--bdr);border-radius:20px;
@@ -381,7 +443,27 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 .price-name{color:var(--mu);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;font-family:var(--ff)}
 .price-amount{font-family:var(--fb);font-size:3.2rem;font-weight:300;letter-spacing:-.04em}
 .price-per{color:var(--mu);font-size:.82rem;margin-bottom:22px;margin-top:2px}
+/* Sits under each price grid: the packages cover the common briefs, this is
+   the way out for everything else. Deliberately not shaped like a price card
+   (accent rule on the left, one flat corner) so it reads as a note rather
+   than a fourth package. */
+.price-custom{
+  display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;
+  margin-top:16px;padding:20px 24px;
+  border:1px solid var(--bdr);border-left:2px solid var(--ac);
+  border-radius:0 14px 14px 0;background:rgba(126,179,255,.03);
+}
+.price-custom strong{
+  font-family:var(--ff);font-size:.98rem;font-weight:700;letter-spacing:-.01em;
+  display:block;margin-bottom:5px;
+}
+.price-custom p{color:var(--mu2);font-size:.86rem;font-weight:300;line-height:1.65;max-width:640px}
+.price-custom .btn-ghost{flex-shrink:0}
+
 .price-divider{height:1px;background:var(--bdr);margin-bottom:20px}
+/* SEO tiers state no billing period, so the divider would otherwise sit flush
+   against the amount where .price-per used to provide the gap. */
+.price-amount + .price-divider{margin-top:22px}
 .price-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
 .price-feats li{display:flex;align-items:center;gap:9px;font-size:.85rem;color:var(--mu2);font-weight:300}
 .price-feats li svg{fill:none;width:13px;height:13px;stroke-width:2.5;flex-shrink:0}
@@ -513,6 +595,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .tiles{grid-template-columns:repeat(2,1fr)}
   .track{grid-template-columns:repeat(2,1fr)}
   .sv-list{grid-template-columns:repeat(2,1fr)}
+  .pillar{padding:36px 30px 34px}
   .approach-grid{grid-template-columns:repeat(2,1fr)}
   .price-grid{grid-template-columns:repeat(2,1fr);gap:16px}
   .price-card.featured{grid-row:span 1}
@@ -521,12 +604,33 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media(max-width:700px){
   .price-grid{grid-template-columns:1fr}
   .approach-grid{grid-template-columns:1fr}
+  /* stacked: the divider moves from the side to between the two pillars */
+  .pillars{grid-template-columns:1fr}
+  .pillar + .pillar{border-left:none;border-top:1px solid var(--bdr)}
+  .sv-list.two,.tiles.two{grid-template-columns:1fr}
 }
 
 @media(max-width:900px){
   nav{padding:12px 24px}
   nav.sc{padding:9px 24px}
-  .nav-links{display:none}
+  /* the link row becomes a panel dropping from the bar, opened by .nav-toggle */
+  .nav-toggle{display:inline-flex}
+  .nav-links{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;gap:0;
+    /* fully opaque: at 99% alpha the hero headline still read through the
+       panel, because the blurred nav behind it lets the page show */
+    background:var(--bg);
+    border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);
+    padding:4px 24px 10px;
+    max-height:calc(100vh - 100%);overflow-y:auto;
+    box-shadow:0 18px 40px rgba(0,0,0,.55);
+  }
+  nav.open .nav-links{display:flex}
+  .nav-links li{border-bottom:1px solid var(--bdr)}
+  .nav-links li:last-child{border-bottom:none}
+  .nav-links a{display:block;padding:14px 0;font-size:.95rem}
+  .nav-links a[aria-current="page"]::after{display:none}
   .nav-right{gap:12px}
   .nav-cta{padding:8px 16px;font-size:.8rem}
   .lang-switch{padding:5px 10px;font-size:.8rem}
@@ -571,11 +675,29 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .vs-lbl{width:104px}
 }
 
+@media(max-width:640px){
+  /* The bar carried logo + EN + a long CTA + the menu button, which together
+     are wider than a phone; the overflow pushed the menu button off screen and
+     clipped the page. The CTA is dropped here because the same action is
+     already one tap away in the menu and in the sticky bar at the bottom. */
+  .nav-cta{display:none}
+  .logo{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* Touch targets: these are standalone controls, not links inside a
+     sentence, so they need a finger-sized box rather than the text height. */
+  .lang-switch{display:inline-flex;align-items:center;min-height:36px;padding:0 12px}
+  .pillar-link{display:inline-flex;align-items:center;min-height:36px}
+  .footer-copy a,.footer-sub{display:inline-flex;align-items:center;min-height:32px}
+  /* email and phone are tapped to start a call or a mail, so they get a
+     finger-sized row rather than the height of the text */
+  .c-row{gap:12px}
+  .c-row a{display:inline-flex;align-items:center;min-height:36px}
+}
+
 @media(max-width:480px){
   nav{padding:10px 16px}
   .logo{font-size:1.1rem;gap:6px}
   .logo-mark{width:30px;height:30px}
-  .nav-cta{padding:7px 12px;font-size:.75rem}
   .lang-switch{padding:4px 8px;font-size:.75rem}
   .hero{padding:90px 16px 70px}
   h1{font-size:1.8rem}
@@ -610,6 +732,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .form-group input,.form-group textarea{padding:11px 14px;font-size:.85rem}
   .form-submit{padding:12px;font-size:.88rem}
   .price-card{padding:24px 20px}
+  .price-custom{padding:16px 18px;gap:14px}
+  .price-custom .btn-ghost{width:100%;justify-content:center}
+  .pillar{padding:26px 20px 24px}
   .price-amount{font-size:2.8rem}
   .price-feats li{font-size:.82rem}
   .sticky-cta{font-size:.85rem;padding:14px 20px}

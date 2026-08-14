@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ako prebieha SEO optimalizácia – päť krokov | LumaWeb</title>
-  <meta name="description" content="Zdokumentovaný postup SEO optimalizácie v piatich krokoch: analýza webu, výskum kľúčových slov, on-page optimalizácia, tvorba obsahu a priebežné sledovanie výsledkov."/>
+  <title>Proces spolupráce v piatich krokoch | LumaWeb</title>
+  <meta name="description" content="Zdokumentovaný postup v piatich krokoch: analýza webu, výskum kľúčových slov, on-page optimalizácia, tvorba obsahu a priebežné sledovanie výsledkov."/>
   <meta name="author" content="LumaWeb"/>
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
   <link rel="canonical" href="https://lumaweb.sk/proces/"/>
@@ -17,8 +17,8 @@
   <meta property="og:locale" content="sk_SK"/>
   <meta property="og:locale:alternate" content="en_US"/>
   <meta property="og:site_name" content="LumaWeb"/>
-  <meta property="og:title" content="Ako prebieha SEO optimalizácia – päť krokov | LumaWeb"/>
-  <meta property="og:description" content="Zdokumentovaný postup SEO optimalizácie v piatich krokoch: analýza webu, výskum kľúčových slov, on-page optimalizácia, tvorba obsahu a priebežné sledovanie výsledkov."/>
+  <meta property="og:title" content="Proces spolupráce v piatich krokoch | LumaWeb"/>
+  <meta property="og:description" content="Zdokumentovaný postup v piatich krokoch: analýza webu, výskum kľúčových slov, on-page optimalizácia, tvorba obsahu a priebežné sledovanie výsledkov."/>
   <meta property="og:url" content="https://lumaweb.sk/proces/"/>
   <meta property="og:image" content="https://lumaweb.sk/og-image.jpg"/>
   <meta property="og:image:width" content="1200"/>
@@ -26,8 +26,8 @@
   <meta property="og:image:alt" content="LumaWeb"/>
 
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Ako prebieha SEO optimalizácia – päť krokov | LumaWeb"/>
-  <meta name="twitter:description" content="Zdokumentovaný postup SEO optimalizácie v piatich krokoch: analýza webu, výskum kľúčových slov, on-page optimalizácia, tvorba obsahu a priebežné sledovanie výsledkov."/>
+  <meta name="twitter:title" content="Proces spolupráce v piatich krokoch | LumaWeb"/>
+  <meta name="twitter:description" content="Zdokumentovaný postup v piatich krokoch: analýza webu, výskum kľúčových slov, on-page optimalizácia, tvorba obsahu a priebežné sledovanie výsledkov."/>
   <meta name="twitter:image" content="https://lumaweb.sk/og-image.jpg"/>
 
   <link rel="icon" type="image/png" href="/favicon.png"/>
@@ -40,8 +40,8 @@
   "@type": "WebPage",
   "@id": "https://lumaweb.sk/proces/#webpage",
   "url": "https://lumaweb.sk/proces/",
-  "name": "Ako prebieha SEO optimalizácia – päť krokov | LumaWeb",
-  "description": "Zdokumentovaný postup SEO optimalizácie v piatich krokoch: analýza webu, výskum kľúčových slov, on-page optimalizácia, tvorba obsahu a priebežné sledovanie výsledkov.",
+  "name": "Proces spolupráce v piatich krokoch | LumaWeb",
+  "description": "Zdokumentovaný postup v piatich krokoch: analýza webu, výskum kľúčových slov, on-page optimalizácia, tvorba obsahu a priebežné sledovanie výsledkov.",
   "isPartOf": {
     "@id": "https://lumaweb.sk/#website"
   },
@@ -73,10 +73,8 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" href="/style.css" as="style"/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/fonts.css"/>
   <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
@@ -89,9 +87,10 @@
     </div>
     Luma<em>Web</em>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tvorba-webov/">Tvorba webov</a></li>
+    <li><a href="/sluzby/">SEO a GEO</a></li>
     <li><a href="/proces/" aria-current="page">Proces</a></li>
-    <li><a href="/sluzby/">Služby</a></li>
     <li><a href="/cennik/">Cenník</a></li>
     <li><a href="/faq/">FAQ</a></li>
     <li><a href="/kontakt/">Kontakt</a></li>
@@ -99,6 +98,10 @@
   <div class="nav-right">
     <a href="/en/" class="lang-switch" aria-label="Switch to English">EN</a>
     <a href="/kontakt/" class="nav-cta">Bezplatný audit</a>
+    <button class="nav-toggle" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="nav-links">
+      <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+      <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
   </div>
 </nav>
 </header>
@@ -185,12 +188,12 @@
         <p>Opravy chýb a technického stavu. Google si web musí prejsť odznova.</p>
       </div>
       <div class="track-item reveal">
-        <div class="track-when">2.–3. mesiac</div>
+        <div class="track-when">2. až 3. mesiac</div>
         <h3>Prvé pohyby</h3>
         <p>Pozície sa hýbu, zvyčajne najprv na menej konkurenčných výrazoch.</p>
       </div>
       <div class="track-item reveal">
-        <div class="track-when">4.–6. mesiac</div>
+        <div class="track-when">4. až 6. mesiac</div>
         <h3>Viditeľný rast</h3>
         <p>Organická návštevnosť rastie tak, že to vidno aj bez lupy.</p>
       </div>
@@ -233,7 +236,7 @@
       <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
     </a>
   </div>
-  <div class="footer-copy">&copy; <span id="yr"></span> LumaWeb</div>
+  <div class="footer-copy">&copy; <span id="yr"></span> LumaWeb &middot; <a href="/ochrana-osobnych-udajov/">Ochrana osobných údajov</a></div>
 </footer>
 
 <script src="/ui.js" defer></script>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kontakt – vyžiadajte si bezplatný SEO audit | LumaWeb</title>
+  <title>Kontakt a bezplatný SEO audit | LumaWeb</title>
   <meta name="description" content="Napíšte nám a do 3 pracovných dní dostanete bezplatný SEO audit vášho webu s konkrétnymi odporúčaniami. Bez záväzkov."/>
   <meta name="author" content="LumaWeb"/>
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
@@ -17,7 +17,7 @@
   <meta property="og:locale" content="sk_SK"/>
   <meta property="og:locale:alternate" content="en_US"/>
   <meta property="og:site_name" content="LumaWeb"/>
-  <meta property="og:title" content="Kontakt – vyžiadajte si bezplatný SEO audit | LumaWeb"/>
+  <meta property="og:title" content="Kontakt a bezplatný SEO audit | LumaWeb"/>
   <meta property="og:description" content="Napíšte nám a do 3 pracovných dní dostanete bezplatný SEO audit vášho webu s konkrétnymi odporúčaniami. Bez záväzkov."/>
   <meta property="og:url" content="https://lumaweb.sk/kontakt/"/>
   <meta property="og:image" content="https://lumaweb.sk/og-image.jpg"/>
@@ -26,7 +26,7 @@
   <meta property="og:image:alt" content="LumaWeb"/>
 
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Kontakt – vyžiadajte si bezplatný SEO audit | LumaWeb"/>
+  <meta name="twitter:title" content="Kontakt a bezplatný SEO audit | LumaWeb"/>
   <meta name="twitter:description" content="Napíšte nám a do 3 pracovných dní dostanete bezplatný SEO audit vášho webu s konkrétnymi odporúčaniami. Bez záväzkov."/>
   <meta name="twitter:image" content="https://lumaweb.sk/og-image.jpg"/>
 
@@ -40,7 +40,7 @@
   "@type": "WebPage",
   "@id": "https://lumaweb.sk/kontakt/#webpage",
   "url": "https://lumaweb.sk/kontakt/",
-  "name": "Kontakt – vyžiadajte si bezplatný SEO audit | LumaWeb",
+  "name": "Kontakt a bezplatný SEO audit | LumaWeb",
   "description": "Napíšte nám a do 3 pracovných dní dostanete bezplatný SEO audit vášho webu s konkrétnymi odporúčaniami. Bez záväzkov.",
   "isPartOf": {
     "@id": "https://lumaweb.sk/#website"
@@ -73,10 +73,8 @@
 }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" href="/style.css" as="style"/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/fonts.css"/>
   <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
@@ -89,9 +87,10 @@
     </div>
     Luma<em>Web</em>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tvorba-webov/">Tvorba webov</a></li>
+    <li><a href="/sluzby/">SEO a GEO</a></li>
     <li><a href="/proces/">Proces</a></li>
-    <li><a href="/sluzby/">Služby</a></li>
     <li><a href="/cennik/">Cenník</a></li>
     <li><a href="/faq/">FAQ</a></li>
     <li><a href="/kontakt/" aria-current="page">Kontakt</a></li>
@@ -99,6 +98,10 @@
   <div class="nav-right">
     <a href="/en/" class="lang-switch" aria-label="Switch to English">EN</a>
     <a href="/kontakt/" class="nav-cta">Bezplatný audit</a>
+    <button class="nav-toggle" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="nav-links">
+      <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+      <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
   </div>
 </nav>
 </header>
@@ -122,7 +125,7 @@
         <div class="c-row">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <a href="https://voidsolutions.eu" target="_blank" rel="noopener">Void Solutions</a>
-          <span>– materská spoločnosť</span>
+          <span>, materská spoločnosť</span>
         </div>
       </div>
     </div>
@@ -131,10 +134,11 @@
       <div class="form-glow"></div>
       <div id="form-wrap">
         <div class="form-title">Bezplatný SEO audit</div>
+        <form onsubmit="submitForm(event)">
         <div class="form-row">
           <div class="form-group">
             <label for="f-name">Vaše meno</label>
-            <input type="text" id="f-name" placeholder="Ján Novák" autocomplete="name"/>
+            <input type="text" id="f-name" placeholder="Ján Novák" autocomplete="name" required/>
           </div>
           <div class="form-group">
             <label for="f-web">Web stránka</label>
@@ -143,14 +147,15 @@
         </div>
         <div class="form-group">
           <label for="f-email">E-mail</label>
-          <input type="email" id="f-email" placeholder="jan@vasafirma.sk" autocomplete="email"/>
+          <input type="email" id="f-email" placeholder="jan@vasafirma.sk" autocomplete="email" required/>
         </div>
         <div class="form-group">
           <label for="f-msg">Správa <span style="color:var(--mu);font-size:.7rem;text-transform:none;letter-spacing:0">(voliteľné)</span></label>
           <textarea id="f-msg" placeholder="Čo by ste chceli zlepšiť?"></textarea>
         </div>
-        <button class="form-submit" onclick="submitForm()">Chcem bezplatný SEO audit</button>
-        <p class="form-note">Odpovedáme do 3 pracovných dní. Žiadny spam, žiadne záväzky.</p>
+        <button class="form-submit" type="submit">Chcem bezplatný SEO audit</button>
+        <p class="form-note">Odpovedáme do 3 pracovných dní. Žiadny spam, žiadne záväzky. Odoslaním súhlasíte so spracovaním údajov podľa <a href="/ochrana-osobnych-udajov/">zásad ochrany osobných údajov</a>.</p>
+        </form>
       </div>
       <div id="form-success">
         <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -176,7 +181,7 @@
       <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
     </a>
   </div>
-  <div class="footer-copy">&copy; <span id="yr"></span> LumaWeb</div>
+  <div class="footer-copy">&copy; <span id="yr"></span> LumaWeb &middot; <a href="/ochrana-osobnych-udajov/">Ochrana osobných údajov</a></div>
 </footer>
 
 <script src="/ui.js" defer></script>
