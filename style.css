@@ -508,6 +508,8 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 .c-row a{color:var(--tx);transition:color .2s}
 .c-row a:hover{color:var(--ac)}
 .c-row span{color:var(--mu2)}
+.c-legal{margin-top:28px;padding-top:18px;border-top:1px solid var(--bdr);display:flex;flex-direction:column;gap:5px;font-size:.78rem;line-height:1.5;color:var(--mu)}
+.c-legal span:first-child{color:var(--mu2)}
 .form-card{background:var(--sur);border:1px solid var(--bdr);border-radius:24px;padding:36px;position:relative;overflow:hidden}
 .form-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;

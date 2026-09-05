@@ -70,7 +70,7 @@
     <xhtml:link rel="alternate" hreflang="sk" href="https://lumaweb.sk/ochrana-osobnych-udajov/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lumaweb.sk/en/privacy/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lumaweb.sk/ochrana-osobnych-udajov/"/>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -143,7 +143,25 @@
     <xhtml:link rel="alternate" hreflang="sk" href="https://lumaweb.sk/ochrana-osobnych-udajov/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lumaweb.sk/en/privacy/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lumaweb.sk/ochrana-osobnych-udajov/"/>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://lumaweb.sk/obchodne-podmienky/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://lumaweb.sk/obchodne-podmienky/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lumaweb.sk/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lumaweb.sk/obchodne-podmienky/"/>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://lumaweb.sk/en/terms/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://lumaweb.sk/obchodne-podmienky/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lumaweb.sk/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lumaweb.sk/obchodne-podmienky/"/>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
