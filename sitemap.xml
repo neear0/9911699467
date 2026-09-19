@@ -165,4 +165,22 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://lumaweb.sk/o-nas/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://lumaweb.sk/o-nas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lumaweb.sk/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lumaweb.sk/o-nas/"/>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lumaweb.sk/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://lumaweb.sk/o-nas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lumaweb.sk/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lumaweb.sk/o-nas/"/>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

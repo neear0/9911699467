@@ -97,6 +97,25 @@ nav{
 .nav-cta:hover{box-shadow:0 8px 28px rgba(74,126,255,.5);transform:translateY(-1px)}
 .nav-right{display:flex;align-items:center;gap:16px}
 
+/* Between the hamburger breakpoint and a wide desktop the full link row
+   (seven links since the About page, longer in English) is wider than the
+   window at 64px side padding, so the bar tightens instead of overflowing. */
+@media(min-width:901px) and (max-width:1280px){
+  nav,nav.sc{padding-left:28px;padding-right:28px}
+  .nav-links{gap:20px}
+  .nav-links a{font-size:.82rem;letter-spacing:.01em;white-space:nowrap}
+  .nav-right{gap:12px}
+  .nav-cta{padding:8px 16px;font-size:.8rem;white-space:nowrap}
+}
+/* narrowest desktop band: the CTA goes, as it does below 640px, because the
+   Contact link in the row leads to the same page */
+@media(min-width:901px) and (max-width:1060px){
+  .logo{font-size:1.3rem;gap:8px}
+  .logo-mark{width:36px;height:36px}
+  .nav-links{gap:16px}
+  .nav-cta{display:none}
+}
+
 /* Mobile menu trigger. Hidden on desktop; below 900px it is the only way to
    reach anything other than the home page and the contact CTA, because the
    horizontal link list does not fit there. */
@@ -260,6 +279,42 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 .tile:hover{border-color:rgba(126,179,255,.24);transform:translateY(-3px)}
 .tile h3{font-family:var(--ff);font-size:1.02rem;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
 .tile p{color:var(--mu2);font-size:.86rem;font-weight:300;line-height:1.65}
+
+/* ---------------------------------------------------------------
+   About page: the company drawn as the family tree it is. One root
+   (the family business), a trunk line, and a branch per brand, with
+   the brand you are reading lit. Hairlines only, no boxes: the lines
+   are the point, a card per node would hide them.
+   --------------------------------------------------------------- */
+.kin{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.kin .block-hd{margin-bottom:0}
+.kin-tree{padding-top:6px}
+.kin-name{font-family:var(--ff);font-size:1.3rem;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.kin-name em{font-style:normal;color:var(--ac)}
+.kin-name a{border-bottom:1px solid var(--bdr2);transition:border-color .2s,color .2s}
+.kin-name a:hover{color:var(--ac);border-color:var(--ac)}
+.kin-sub{color:var(--mu2);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+.kin-root{padding-bottom:26px}
+.kin-branches{list-style:none;border-left:1px solid var(--bdr2);margin-left:10px}
+.kin-branch{position:relative;padding:0 0 30px 34px}
+.kin-branch:last-child{padding-bottom:0}
+/* the tick from trunk to branch */
+.kin-branch::before{content:'';position:absolute;left:0;top:.8rem;width:22px;height:1px;background:var(--bdr2)}
+/* the last branch closes the trunk at its own tick, so the line ends there */
+.kin-branch:last-child::after{content:'';position:absolute;left:-1px;top:calc(.8rem + 1px);bottom:0;width:1px;background:var(--bg)}
+.kin-branch p{color:var(--mu2);font-size:.92rem;font-weight:300;line-height:1.7;margin-top:6px;max-width:420px}
+.kin-branch.here::before{background:var(--ac);box-shadow:0 0 8px var(--ac2)}
+.kin-here{display:inline-block;vertical-align:middle;margin-left:10px;font-family:var(--fb);font-size:.66rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);border-bottom:1px solid var(--ac)}
+
+.facts{max-width:820px;border-top:1px solid var(--bdr)}
+.facts div{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:16px 0;border-bottom:1px solid var(--bdr)}
+.facts dt{color:var(--mu2);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding-top:2px}
+.facts dd{font-size:.95rem;line-height:1.6}
+
+@media(max-width:900px){
+  .kin{grid-template-columns:1fr;gap:36px}
+  .facts div{grid-template-columns:1fr;gap:4px}
+}
 
 /* ---------------------------------------------------------------
    The two service pillars on the home page.
@@ -544,7 +599,9 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 #form-success p{color:var(--mu2);font-size:.95rem}
 
 
-footer{border-top:1px solid var(--bdr);padding:32px 64px;display:flex;justify-content:space-between;align-items:center}
+/* three equal outer columns, so the social icons sit on the page centre
+   regardless of how wide the brand block and the copyright line are */
+footer{border-top:1px solid var(--bdr);padding:32px 64px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center}
 .footer-brand{font-family:var(--ff);font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
 .footer-brand em{color:var(--ac);font-style:normal}
 .footer-sub{font-size:.72rem;color:var(--mu);margin-top:2px}
@@ -555,7 +612,7 @@ footer{border-top:1px solid var(--bdr);padding:32px 64px;display:flex;justify-co
 .footer-social a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--bdr);border-radius:10px;color:var(--mu);transition:color .2s,border-color .2s,background .2s}
 .footer-social a:hover{color:var(--ac);border-color:var(--ac);background:rgba(255,255,255,.03)}
 .footer-social svg{stroke:currentColor;fill:none;width:18px;height:18px;stroke-width:1.8}
-.footer-copy{color:var(--mu);font-size:.75rem}
+.footer-copy{color:var(--mu);font-size:.75rem;justify-self:end;text-align:right}
 
 
 .sticky-cta{
@@ -663,7 +720,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .contact{padding:60px 24px}
   .contact-inner{grid-template-columns:1fr;gap:40px}
   .form-row{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:16px;text-align:center;padding:24px 24px 80px}
+  footer{display:flex;flex-direction:column;gap:16px;text-align:center;padding:24px 24px 80px}
+  .footer-copy{text-align:center}
   .footer-links{flex-wrap:wrap;justify-content:center}
   .sticky-cta{display:inline-flex}
   .contact{padding-bottom:80px}
