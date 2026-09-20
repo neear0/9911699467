@@ -686,6 +686,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     box-shadow:0 18px 40px rgba(0,0,0,.55);
   }
   nav.open .nav-links{display:flex}
+  html.menu-open,body.menu-open{overflow:hidden}
   .nav-links li{border-bottom:1px solid var(--bdr)}
   .nav-links li:last-child{border-bottom:none}
   .nav-links a{display:block;padding:14px 0;font-size:.95rem}

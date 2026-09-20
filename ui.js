@@ -17,6 +17,10 @@
   const set = (open) => {
     nav.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // the panel covers most of a phone screen, so the page behind it must
+    // hold still; otherwise scrolling looks like the menu is stuck to nothing
+    document.documentElement.classList.toggle('menu-open', open);
+    document.body.classList.toggle('menu-open', open);
   };
 
   btn.addEventListener('click', (e) => {
