@@ -72,8 +72,11 @@
 }
   </script>
 
+  <!-- the two latin faces every page renders with: preloaded so the swap from
+       the fallback happens sooner and moves the text less -->
+  <link rel="preload" href="/fonts/rP2Hp2ywxg089UriCZOIHQ.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" href="/fonts/8vIH7w4qzmVxm2BL9A.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="preload" href="/style.css" as="style"/>
-  <link rel="stylesheet" href="/fonts.css"/>
   <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
@@ -82,7 +85,7 @@
 <nav id="nav" aria-label="Hlavná navigácia">
   <a href="/" class="logo" aria-label="LumaWeb - Domov">
     <div class="logo-mark">
-      <img src="/logo.png" alt="LumaWeb logo" width="54" height="54"/>
+      <img src="/logo-128.png" alt="LumaWeb logo" width="54" height="54" decoding="async"/>
     </div>
     Luma<em>Web</em>
   </a>

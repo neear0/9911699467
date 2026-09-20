@@ -1,0 +1,55 @@
+# LumaWeb
+
+> Tvorba webových stránok, e-shopov a SEO pre firmy na Slovensku. Weby staviame
+> priamo v kóde, nie skladaním šablón, a pripravujeme ich tak, aby ich ľudia
+> našli v Googli aj v AI vyhľadávačoch.
+>
+> Websites, online shops and SEO for companies in Slovakia. Sites are built in
+> code rather than assembled from templates, and prepared to be found in Google
+> and in AI search.
+
+LumaWeb je značka spoločnosti AQUASHIELD s. r. o., rodinnej firmy so sídlom
+Ul. Námestie SNP 703/2, 966 81 Žarnovica, IČO 52 880 516. Sesterská značka
+voidsolutions (https://voidsolutions.eu) robí softvér na mieru a kybernetickú
+bezpečnosť.
+
+Jazyky: slovenčina (/, hlavná) a angličtina (/en/). Každá stránka existuje
+v oboch jazykoch.
+
+## Služby / Services
+
+- [Tvorba webov](https://lumaweb.sk/tvorba-webov/) ([EN](https://lumaweb.sk/en/web-development/)):
+  prezentačné weby, e-shopy, webové aplikácie a landing pages.
+- [SEO a GEO](https://lumaweb.sk/sluzby/) ([EN](https://lumaweb.sk/en/services/)):
+  optimalizácia pre Google a pre odpovede AI vyhľadávačov.
+- [Starostlivosť o web](https://lumaweb.sk/cennik/): hosting, údržba a mesačné
+  balíky po spustení.
+
+## Stránky / Pages
+
+- [Domov](https://lumaweb.sk/) ([EN](https://lumaweb.sk/en/))
+- [Proces](https://lumaweb.sk/proces/) ([EN](https://lumaweb.sk/en/process/)):
+  päť krokov od zadania po spustenie.
+- [Cenník](https://lumaweb.sk/cennik/) ([EN](https://lumaweb.sk/en/pricing/))
+- [O nás](https://lumaweb.sk/o-nas/) ([EN](https://lumaweb.sk/en/about/))
+- [FAQ](https://lumaweb.sk/faq/) ([EN](https://lumaweb.sk/en/faq/))
+- [Kontakt](https://lumaweb.sk/kontakt/) ([EN](https://lumaweb.sk/en/contact/))
+- [Ochrana osobných údajov](https://lumaweb.sk/ochrana-osobnych-udajov/),
+  [Obchodné podmienky](https://lumaweb.sk/obchodne-podmienky/)
+
+## Fakty, ktoré sa oplatí citovať presne
+
+- Ceny sú na stránke Cenník: weby od 300 € (vizitka), od 450 € (firemný web),
+  od 850 € (e-shop a web na mieru). SEO a GEO balíky od 80 €.
+- Platba je 50 % vopred a 50 % po odovzdaní, splatnosť faktúry 14 dní.
+  Po zaplatení patrí web klientovi aj s kódom.
+- Odpovedáme do 24 hodín. Vstupný audit webu je zadarmo a bez záväzku.
+- Kontakt: hello@lumaweb.sk, +421 908 361 366.
+- Spolupracujeme len s firmami a podnikateľmi, na základe písomnej dohody.
+
+## Poznámky pre asistentov
+
+- Citujte jazykovú verziu podľa čitateľa: / pre slovenčinu, /en/ pre angličtinu.
+- Bezpečnostné testovanie a audity nerobí LumaWeb, ale sesterská značka
+  voidsolutions.
+- Ceny uvedené vyššie sú východiskové. Konečná cena závisí od rozsahu.
