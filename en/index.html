@@ -220,31 +220,58 @@
 </header>
 <main>
 
-<section class="stage" aria-labelledby="hero-h">
-  <!-- set before the headline paints, so it never flashes and then hides;
-       the timeout is the failsafe if light.js never runs -->
-  <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){var s=document.currentScript.parentNode;s.classList.add('js-stage');setTimeout(function(){s.classList.add('lit')},2600)}</script>
-  <canvas class="stage-canvas" aria-hidden="true"></canvas>
-  <div class="stage-in">
-    <h1 id="hero-h">
-      <span class="h1-kw">Custom website design and development</span>
-      <span class="h1-big">
-        <span class="ln"><span class="w">Websites</span><i class="bl"></i></span>
-        <span class="ln"><span class="w">people</span><i class="bl"></i></span>
-        <span class="ln"><span class="w">remember.</span><i class="bl"></i></span>
-      </span>
-    </h1>
-    <div class="stage-low">
-      <p class="stage-p">We design and build websites for companies that do not want to look like their competitors. Each one starts from a first sketch, with its own type, colour and motion. Underneath is <strong>fast code, ready for Google</strong>, and it stays yours.</p>
-      <div class="stage-cta">
-        <a href="/en/contact/" class="btn-primary">Tell us about your project</a>
-        <a href="#how-its-built" class="btn-ghost">How a site is built</a>
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-grid"></div>
+
+  <div class="hero-inner">
+    <div>
+      <h1>Web development<br>for businesses and e-shops
+        <span class="h1-sub">And the visibility to be found.</span>
+      </h1>
+      <p class="hero-p">We help businesses and e-commerce stores have a website that works and that people actually find. Written directly in code, so it is fast, maintainable and ready for Google from day one.</p>
+      <div class="hero-btns">
+        <a href="/en/contact/" class="btn-primary">Free consultation</a>
+        <a href="/en/web-development/" class="btn-ghost">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          What we build
+        </a>
       </div>
     </div>
-    <div class="stage-foot">
-      <span class="hint-fine">Move your mouse. The light shows the construction this headline is set on.</span>
-      <span class="hint-touch">Every website stands on a precise construction. This headline too.</span>
-      <span>We reply within 24 hours</span>
+
+
+    <div class="hcard-wrap">
+      <div class="floatbadge fb1">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        We reply within 24 hours
+      </div>
+
+      <div class="hcard">
+        <div class="card-label">What we can help with</div>
+
+        <div class="audit-row">
+          <div class="audit-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div><div class="audit-title">A new custom website</div><div class="audit-sub">company site, landing page, multiple languages</div></div>
+        </div>
+        <div class="audit-row">
+          <div class="audit-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+          <div><div class="audit-title">An e-shop or application</div><div class="audit-sub">selling, bookings, client areas</div></div>
+        </div>
+        <div class="audit-row">
+          <div class="audit-icon"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><polyline points="3 4 3 12 11 12"/></svg></div>
+          <div><div class="audit-title">Rebuilding an old site</div><div class="audit-sub">slow, outdated or impossible to manage</div></div>
+        </div>
+        <div class="audit-row">
+          <div class="audit-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div><div class="audit-title">SEO and GEO visibility</div><div class="audit-sub">so you're found on Google and in AI answers</div></div>
+        </div>
+        <div class="card-glow"></div>
+      </div>
+
+      <div class="floatbadge fb2">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        hello@lumaweb.sk
+      </div>
     </div>
   </div>
 </section>
@@ -368,45 +395,27 @@
 
 </main>
 
-<footer class="foot">
-  <div class="foot-in">
-    <p class="foot-k">Have a project? Write us a few lines about it.</p>
-    <a class="foot-mail" href="mailto:hello@lumaweb.sk">hello@lumaweb.sk</a>
-    <div class="foot-row">
-      <div class="foot-tel"><a href="tel:+421908361366">+421 908 361 366</a><span>We reply within 24 hours.</span></div>
-      <ul class="foot-nav" aria-label="Footer">
-        <li><a href="/en/web-development/">Web development</a></li>
-        <li><a href="/en/work/">Work</a></li>
-        <li><a href="/en/process/">Process</a></li>
-        <li><a href="/en/services/">SEO &amp; GEO</a></li>
-        <li><a href="/en/faq/">FAQ</a></li>
-        <li><a href="/en/about/">About</a></li>
-        <li><a href="/en/contact/">Contact</a></li>
-      </ul>
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/company/lumaweb-slovakia/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="https://www.instagram.com/lumaweb_slovakia" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1"/></svg>
-        </a>
-        <a href="https://www.facebook.com/people/Lumaweb/61593587116990/" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="foot-legal">
-      <span>&copy; <span id="yr"></span> AQUASHIELD s. r. o., Company ID 52 880 516</span>
-      <a href="/en/privacy/">Privacy Policy</a>
-      <a href="/en/terms/">Terms of Business</a>
-      <a href="https://voidsolutions.eu" target="_blank" rel="noopener" class="footer-vs">powered by Void <span class="vs-sol">Solutions</span></a>
-    </div>
+<footer>
+  <div>
+    <div class="footer-brand">Luma<em>Web</em></div>
+    <a href="https://voidsolutions.eu" target="_blank" rel="noopener" class="footer-sub footer-vs">powered by Void <span class="vs-sol">Solutions</span></a>
   </div>
-  <div class="foot-word" aria-hidden="true">LumaWeb</div>
+  <div class="footer-social">
+    <a href="https://www.linkedin.com/company/lumaweb-slovakia/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <a href="https://www.instagram.com/lumaweb_slovakia" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1"/></svg>
+    </a>
+    <a href="https://www.facebook.com/people/Lumaweb/61593587116990/" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+  </div>
+  <div class="footer-copy">&copy; <span id="yr"></span> AQUASHIELD s. r. o. &middot; Company ID 52 880 516 &middot; <a href="/en/privacy/">Privacy Policy</a> &middot; <a href="/en/terms/">Terms of Business</a></div>
 </footer>
 
 <script src="/ui.js" defer></script>
-<script src="/light.js" defer></script>
+<script src="/hero-canvas.js" defer></script>
 
 </body>
 </html>

@@ -216,7 +216,7 @@ window.submitForm = submitForm;
    so it steps aside while either of them is on screen. */
 (function initStickyCta() {
   const bar = document.querySelector('.sticky-cta');
-  const owners = [...document.querySelectorAll('.stage, footer, .contact')];
+  const owners = [...document.querySelectorAll('.hero, footer, .contact')];
   if (!bar || !owners.length || !('IntersectionObserver' in window)) return;
   const seen = new Set();
   const io = new IntersectionObserver((entries) => {
