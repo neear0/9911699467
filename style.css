@@ -991,42 +991,55 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .case-index{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
 .case-index a{display:inline-block;padding:7px 14px;border:1px solid var(--bdr2);border-radius:100px;font-size:.82rem;color:var(--mu2);transition:all .2s}
 .case-index a:hover{color:var(--tx);border-color:var(--ac);background:rgba(74,126,255,.08)}
-.cases{padding:70px 64px 100px;max-width:1328px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
-.case{background:var(--sur);border:1px solid var(--bdr);border-radius:24px;padding:36px;position:relative;overflow:hidden;scroll-margin-top:90px}
+.cases{padding:70px 64px 100px;max-width:1328px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.case{background:var(--sur);border:1px solid var(--bdr);border-radius:24px;padding:22px;position:relative;overflow:hidden;scroll-margin-top:90px;display:flex;flex-direction:column;gap:24px}
 .case::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(126,179,255,.35),transparent)}
-.case-hd{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px 48px;align-items:start;margin-bottom:28px}
-.case-title h2{font-family:var(--ff);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
-.case-kind{display:inline-flex;align-items:center;gap:10px;margin-top:12px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);flex-wrap:wrap}
+.case-body{padding:0 6px 6px}
+.case-body h2{font-family:var(--ff);font-size:clamp(1.35rem,2.2vw,1.75rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.case-kind{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);flex-wrap:wrap}
 .case-kind::before{content:'';width:16px;height:1px;background:var(--ac)}
-.case-soon{display:inline-block;background:rgba(232,184,75,.1);border:1px solid rgba(232,184,75,.25);color:var(--gold);padding:3px 10px;border-radius:100px;font-size:.64rem;letter-spacing:.08em}
-.case-text p{color:var(--mu2);font-size:.93rem;font-weight:300;line-height:1.72}
-.case-stack{margin:18px 0 20px}
-.case-stack dt{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
+.case-soon,.case-own{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.62rem;letter-spacing:.08em}
+.case-soon{background:rgba(232,184,75,.1);border:1px solid rgba(232,184,75,.25);color:var(--gold)}
+.case-own{background:rgba(74,126,255,.1);border:1px solid rgba(126,179,255,.25);color:var(--ac)}
+.case-desc{margin-top:14px;color:var(--mu2);font-size:.9rem;font-weight:300;line-height:1.7}
+.case-stack{margin:16px 0 18px}
+.case-stack dt{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
 .case-stack dd{display:flex;flex-wrap:wrap;gap:6px}
-.case-stack dd span{background:rgba(255,255,255,.04);border:1px solid var(--bdr);padding:3px 10px;border-radius:100px;font-size:.72rem;color:var(--mu2)}
+.case-stack dd span{background:rgba(255,255,255,.04);border:1px solid var(--bdr);padding:3px 10px;border-radius:100px;font-size:.7rem;color:var(--mu2)}
 .case-link{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;color:var(--ac);font-weight:500}
 .case-link::after{content:'\2197'}
 .case-link:hover{text-decoration:underline}
-.case-media{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+/* media: the main shot on top, the extra shots and the phone in one row
+   below. Column weights follow the aspect ratios (16:10 shots, 600:1298
+   phone), so every item in the row comes out the same height. */
+.case-media{display:grid;gap:10px}
+.case-media.s2{grid-template-columns:minmax(0,16fr) minmax(0,16fr) minmax(0,4.62fr)}
+.case-media.s1{grid-template-columns:minmax(0,16fr) minmax(0,4.62fr)}
+.case-media.s0{grid-template-columns:minmax(0,16fr) minmax(0,4.62fr)}
+.case-media.s1 .cm-main,.case-media.s2 .cm-main{grid-column:1/-1}
 .case-media figure{margin:0}
 .cm-main,.cm-phone,.cm-sub{position:relative;overflow:hidden;background:var(--sur2);border:1px solid var(--bdr);border-radius:14px}
-.case-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
+.cm-phone,.cm-sub{border-radius:10px}
+.case-media img,.case-media video{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
 .cm-main picture{display:block;height:100%}
-.cm-main{display:block;grid-column:1/10;aspect-ratio:16/10;transition:border-color .3s}
+.cm-main{display:block;aspect-ratio:16/10;transition:border-color .3s}
 .cm-main:hover{border-color:rgba(126,179,255,.3)}
-.cm-phone{grid-column:10/13;grid-row:1}
-.cm-phone img{position:absolute;inset:0}
-.cm-sub{grid-column:span 6;aspect-ratio:16/10}
-.one-sub .cm-sub{grid-column:1/13;aspect-ratio:12/5}
+.cm-sub{aspect-ratio:16/10}
+.cm-phone{aspect-ratio:600/1298}
+/* our own brand: one wide card, media left, text right */
+.case-feature{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center;padding:26px}
+.case-feature .case-body{padding:0 14px 0 0}
+.case-feature .case-body h2{font-size:clamp(1.7rem,3vw,2.3rem)}
+.case-feature .case-desc{font-size:.93rem}
 @media(max-width:900px){
-  .cases{padding:50px 24px 70px}
-  .case{padding:26px 22px}
-  .case-hd{grid-template-columns:1fr}
-  .case-media{grid-template-columns:1fr;gap:12px}
-  .cm-main,.cm-sub,.one-sub .cm-sub{grid-column:1;aspect-ratio:16/10}
-  .cm-phone{grid-column:1;grid-row:auto;width:min(280px,64%);justify-self:center;aspect-ratio:600/1298}
+  .cases{padding:50px 24px 70px;grid-template-columns:1fr;gap:20px}
+  .case,.case-feature{padding:18px;gap:20px}
+  .case-feature{display:flex}
+  .case-feature .case-body{padding:0 4px 4px}
 }
 @media(max-width:480px){
   .cases{padding:40px 16px 60px}
-  .case{padding:22px 16px;border-radius:20px}
+  .case,.case-feature{padding:14px;border-radius:20px}
+  .case-media{gap:8px}
+  .cm-phone,.cm-sub{border-radius:8px}
 }

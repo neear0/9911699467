@@ -161,6 +161,26 @@ window.submitForm = submitForm;
 })();
 
 
+/* Portfolio loops: a video loads only when it comes near the screen and
+   plays only while it is visible. Under reduced motion it never loads and
+   the poster frame stays, which is also what a visitor without JS sees. */
+(function initWorkVideos() {
+  const vids = document.querySelectorAll('video[data-src]');
+  if (!vids.length || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        if (!v.getAttribute('src')) v.src = v.dataset.src;
+        v.play().catch(() => {});
+      } else if (!v.paused) v.pause();
+    });
+  }, { rootMargin: '150px 0px' });
+  vids.forEach((v) => io.observe(v));
+})();
+
+
 /* The sticky mobile CTA repeats what the hero and the footer already offer,
    so it steps aside while either of them is on screen. */
 (function initStickyCta() {

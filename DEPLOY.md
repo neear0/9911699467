@@ -70,7 +70,7 @@ neoptimalizuj domovskú späť na SEO výrazy, prišiel by si o obe.
 | `/` | `index.html` | hero + dva piliere + porovnanie SEO vs. reklama + prístup (pôvodný dizajn, rollback 2026-10-16) |
 | `/tvorba-webov/` | `tvorba-webov/index.html` | hlavná služba: weby, e-shopy, aplikácie |
 | `/sluzby/` | `sluzby/index.html` | SEO a GEO (nesie cielenie na „SEO služby Slovensko“) |
-| `/referencie/` | `referencie/index.html` | portfólio: šesť živých webov, pri každom popis, technológie, animácia alebo hlavný záber, mobil a ďalšie zábery (`img/work/`). EN `/en/work/` |
+| `/referencie/` | `referencie/index.html` | portfólio: sedem živých webov ako karty po dvoch vedľa seba, Void Solutions navrchu cez celú šírku. Pri každom popis, technológie, hlavný záber (MP4 slučka, animovaný WebP alebo foto), mobil a ďalšie zábery (`img/work/`). MP4 sa načíta až pri zobrazení (`ui.js`), pri obmedzenom pohybe ostáva len poster. EN `/en/work/` |
 | `/proces/` | `proces/index.html` | päť krokov |
 | `/cennik/` | `cennik/index.html` | **od 2026-10-16 len presmerovanie** na `/tvorba-webov/#cena` (`noindex`, nie je v sitemap). Cenník je zrušený, každý web sa naceňuje podľa zadania |
 | `/faq/` | `faq/index.html` | otázky (nesie FAQPage schema) |
