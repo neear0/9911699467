@@ -74,11 +74,11 @@ async function submitForm(ev) {
   const isEn = (document.documentElement.lang || 'sk').toLowerCase().startsWith('en');
   const t = isEn
     ? { alert: 'Please fill in your name and e-mail.',
-        subject: 'New SEO audit request (lumaweb.sk)',
+        subject: 'New project enquiry (lumaweb.sk)',
         error: 'Sending failed. Please try again or e-mail us directly.',
         sending: 'Sending…' }
     : { alert: 'Vyplňte prosím meno a e-mail.',
-        subject: 'Nová žiadosť o SEO audit (lumaweb.sk)',
+        subject: 'Nový dopyt z lumaweb.sk',
         error: 'Odoslanie zlyhalo. Skúste to znova alebo nám napíšte priamo e-mailom.',
         sending: 'Odosielam…' };
 
@@ -86,6 +86,7 @@ async function submitForm(ev) {
   const email = document.getElementById('f-email').value.trim();
   const web   = (document.getElementById('f-web')?.value || '').trim();
   const msg   = (document.getElementById('f-msg')?.value || '').trim();
+  const kind  = (document.getElementById('f-type')?.value || '').trim();
 
   if (!name || !email) {
     alert(t.alert);
@@ -106,6 +107,7 @@ async function submitForm(ev) {
         from_name:  'LumaWeb web',
         name:       name,
         email:      email,
+        typ:        kind || 'neuvedené',
         web:        web || 'neuvedené',
         message:    msg || 'neuvedené',
       }),
@@ -156,4 +158,70 @@ window.submitForm = submitForm;
     step = Math.min(step + 1, 5);
     obs.observe(el);
   });
+})();
+
+
+/* "How a site is built": the artboard is sticky and the steps scroll past
+   it. Whichever step crosses the middle of the screen sets the artboard's
+   stage. Without JS the artboard keeps its finished state (data-stage="4")
+   and every step is fully visible. */
+(function initBuild() {
+  const art = document.querySelector('.art');
+  const steps = document.querySelectorAll('.build-steps li');
+  if (!art || !steps.length || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js');
+
+  const set = (i) => {
+    art.dataset.stage = String(i);
+    steps.forEach((s, j) => s.classList.toggle('on', j === i));
+  };
+  set(0);
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) set([...steps].indexOf(e.target));
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  steps.forEach((s) => obs.observe(s));
+})();
+
+/* Work: each screenshot is a whole page in a short frame. While the frame
+   crosses the screen the page scrolls inside it, top to bottom. */
+(function initWork() {
+  const frames = [...document.querySelectorAll('.wk-frame')];
+  if (!frames.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const vh = window.innerHeight;
+    frames.forEach((f) => {
+      const img = f.querySelector('img');
+      if (!img || !img.complete) return;
+      const r = f.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+      const travel = img.getBoundingClientRect().height - r.height;
+      img.style.transform = 'translate3d(0,' + (-travel * p).toFixed(1) + 'px,0)';
+    });
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  frames.forEach((f) => { const img = f.querySelector('img'); if (img) img.addEventListener('load', onScroll); });
+  onScroll();
+})();
+
+/* The sticky mobile CTA repeats what the hero and the footer already offer,
+   so it steps aside while either of them is on screen. */
+(function initStickyCta() {
+  const bar = document.querySelector('.sticky-cta');
+  const owners = [...document.querySelectorAll('.stage, footer, .contact')];
+  if (!bar || !owners.length || !('IntersectionObserver' in window)) return;
+  const seen = new Set();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+    bar.classList.toggle('away', seen.size > 0);
+  });
+  owners.forEach((o) => io.observe(o));
 })();

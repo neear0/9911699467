@@ -67,18 +67,19 @@ neoptimalizuj domovskú späť na SEO výrazy, prišiel by si o obe.
 
 | URL | Súbor | Obsah |
 |---|---|---|
-| `/` | `index.html` | hero + dva piliere + porovnanie SEO vs. reklama + prístup |
+| `/` | `index.html` | svetlo nad konštrukciou (hero) + ako vzniká web + čo staviame + hotové weby + cena na mieru |
 | `/tvorba-webov/` | `tvorba-webov/index.html` | hlavná služba: weby, e-shopy, aplikácie |
 | `/sluzby/` | `sluzby/index.html` | SEO a GEO (nesie cielenie na „SEO služby Slovensko“) |
 | `/proces/` | `proces/index.html` | päť krokov |
-| `/cennik/` | `cennik/index.html` | web + SEO/GEO + starostlivosť, každá sekcia s ponukou na mieru |
+| `/cennik/` | `cennik/index.html` | **od 2026-10-16 len presmerovanie** na `/tvorba-webov/#cena` (`noindex`, nie je v sitemap). Cenník je zrušený, každý web sa naceňuje podľa zadania |
 | `/faq/` | `faq/index.html` | otázky (nesie FAQPage schema) |
 | `/kontakt/` | `kontakt/index.html` | kontakt + formulár |
 | `/ochrana-osobnych-udajov/` | `ochrana-osobnych-udajov/index.html` | GDPR, povinné kvôli formuláru |
 
 Anglická vetva je zrkadlom pod `/en/`: `/en/`, `/en/web-development/`,
-`/en/services/`, `/en/process/`, `/en/pricing/`, `/en/faq/`, `/en/contact/`,
-`/en/privacy/`. Slugy sú anglické, takže hreflang páruje 1:1.
+`/en/services/`, `/en/process/`, `/en/faq/`, `/en/about/`, `/en/contact/`,
+`/en/privacy/`. Slugy sú anglické, takže hreflang páruje 1:1. `/en/pricing/`
+je presmerovanie na `/en/web-development/#price`.
 
 | Ostatné | Čo to je |
 |---|---|
@@ -86,8 +87,9 @@ Anglická vetva je zrkadlom pod `/en/`: `/en/`, `/en/web-development/`,
 | `coming-soon.html`, `en/coming-soon.html` | placeholder pre socky, `noindex` |
 | `style.css` | všetky štýly (zdieľané všetkými stránkami) |
 | `fonts.css` + `fonts/*.woff2` | **self-hostované písma** — nikdy sem nevracaj `<link>` na `fonts.googleapis.com`, zásady ochrany údajov tvrdia, že web nevolá žiadnu tretiu stranu |
-| `ui.js` | mobilné menu, FAQ akordeón, odoslanie formulára, rok v päte |
-| `hero-canvas.js` | canvas animácia — načítava sa **len na domovských stránkach** |
+| `ui.js` | mobilné menu, FAQ akordeón, odoslanie formulára, rok v päte, sekcia „ako vzniká web“, posun screenshotov, skrývanie lepkavého tlačidla |
+| `light.js` | svetlo v hero: kreslí skutočnú konštrukciu nadpisu (účiaria, výšky písmen, stĺpce, rozmery čítané z DOM) — načítava sa **len na domovských stránkach** |
+| `img/*.jpg` | screenshoty klientskych webov (agvservis.sk, metalcraft.sk) pre sekciu hotových webov |
 | `sitemap.xml`, `robots.txt` | SEO — sitemap má 16 URL s hreflang |
 | `CNAME` | **nemazať** — drží doménu |
 | `og-image.jpg` | OG náhľad (1.4 MB — pokojne skomprimovať) |
@@ -124,15 +126,15 @@ npx serve -l 8099          # potom http://localhost:8099
 ## Kontroly po deployi
 
 ```bash
-for u in / /tvorba-webov/ /sluzby/ /proces/ /cennik/ /faq/ /kontakt/ \
-         /ochrana-osobnych-udajov/ \
-         /en/ /en/web-development/ /en/services/ /en/process/ /en/pricing/ \
-         /en/faq/ /en/contact/ /en/privacy/; do
+for u in / /tvorba-webov/ /sluzby/ /proces/ /o-nas/ /faq/ /kontakt/ \
+         /ochrana-osobnych-udajov/ /obchodne-podmienky/ \
+         /en/ /en/web-development/ /en/services/ /en/process/ /en/about/ \
+         /en/faq/ /en/contact/ /en/privacy/ /en/terms/; do
   printf '%s  ' "$u"; curl -o /dev/null -s -w '%{http_code}\n' "https://lumaweb.sk$u"
 done
 ```
 
-Všetkých 16 musí vrátiť 200. Ak vráti 404 so stránkou „Site not found ·
+Všetkých 18 musí vrátiť 200. Ak vráti 404 so stránkou „Site not found ·
 GitHub Pages" → je to doména, viď vyššie.
 
 Po nasadení **znovu odošli sitemap v Search Console** — pribudli nové URL
