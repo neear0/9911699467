@@ -161,57 +161,6 @@ window.submitForm = submitForm;
 })();
 
 
-/* "How a site is built": the artboard is sticky and the steps scroll past
-   it. Whichever step crosses the middle of the screen sets the artboard's
-   stage. Without JS the artboard keeps its finished state (data-stage="4")
-   and every step is fully visible. */
-(function initBuild() {
-  const art = document.querySelector('.art');
-  const steps = document.querySelectorAll('.build-steps li');
-  if (!art || !steps.length || !('IntersectionObserver' in window)) return;
-  document.documentElement.classList.add('js');
-
-  const set = (i) => {
-    art.dataset.stage = String(i);
-    steps.forEach((s, j) => s.classList.toggle('on', j === i));
-  };
-  set(0);
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) set([...steps].indexOf(e.target));
-    });
-  }, { rootMargin: '-45% 0px -45% 0px' });
-  steps.forEach((s) => obs.observe(s));
-})();
-
-/* Work: each screenshot is a whole page in a short frame. While the frame
-   crosses the screen the page scrolls inside it, top to bottom. */
-(function initWork() {
-  const frames = [...document.querySelectorAll('.wk-frame')];
-  if (!frames.length) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  let ticking = false;
-  const update = () => {
-    ticking = false;
-    const vh = window.innerHeight;
-    frames.forEach((f) => {
-      const img = f.querySelector('img');
-      if (!img || !img.complete) return;
-      const r = f.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > vh) return;
-      const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
-      const travel = img.getBoundingClientRect().height - r.height;
-      img.style.transform = 'translate3d(0,' + (-travel * p).toFixed(1) + 'px,0)';
-    });
-  };
-  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  frames.forEach((f) => { const img = f.querySelector('img'); if (img) img.addEventListener('load', onScroll); });
-  onScroll();
-})();
-
 /* The sticky mobile CTA repeats what the hero and the footer already offer,
    so it steps aside while either of them is on screen. */
 (function initStickyCta() {

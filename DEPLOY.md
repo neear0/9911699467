@@ -67,7 +67,7 @@ neoptimalizuj domovskú späť na SEO výrazy, prišiel by si o obe.
 
 | URL | Súbor | Obsah |
 |---|---|---|
-| `/` | `index.html` | pôvodný hero + ako vzniká web + čo staviame + hotové weby + cena na mieru |
+| `/` | `index.html` | hero + dva piliere + porovnanie SEO vs. reklama + prístup (pôvodný dizajn, rollback 2026-10-16) |
 | `/tvorba-webov/` | `tvorba-webov/index.html` | hlavná služba: weby, e-shopy, aplikácie |
 | `/sluzby/` | `sluzby/index.html` | SEO a GEO (nesie cielenie na „SEO služby Slovensko“) |
 | `/referencie/` | `referencie/index.html` | portfólio: šesť živých webov, pri každom popis, technológie, animácia alebo hlavný záber, mobil a ďalšie zábery (`img/work/`). EN `/en/work/` |
@@ -88,9 +88,8 @@ je presmerovanie na `/en/web-development/#price`.
 | `coming-soon.html`, `en/coming-soon.html` | placeholder pre socky, `noindex` |
 | `style.css` | všetky štýly (zdieľané všetkými stránkami) |
 | `fonts.css` + `fonts/*.woff2` | **self-hostované písma** — nikdy sem nevracaj `<link>` na `fonts.googleapis.com`, zásady ochrany údajov tvrdia, že web nevolá žiadnu tretiu stranu |
-| `ui.js` | mobilné menu, FAQ akordeón, odoslanie formulára, rok v päte, sekcia „ako vzniká web“, posun screenshotov, skrývanie lepkavého tlačidla |
+| `ui.js` | mobilné menu, FAQ akordeón, odoslanie formulára, rok v päte, skrývanie lepkavého tlačidla |
 | `hero-canvas.js` | animácia pozadia v hero (pôvodný hero, vrátený 2026-10-16) — načítava sa **len na domovských stránkach** |
-| `img/*.jpg` | celostránkové screenshoty (z-izol, metalcraft) pre sekciu hotových webov na domovskej stránke |
 | `img/work/*.webp` | zábery pre referencie; `*-hero.webp` sú animované slučky, `*-hero-still.webp` sa ukáže pri vypnutých animáciách |
 | `sitemap.xml`, `robots.txt` | SEO — sitemap má 16 URL s hreflang |
 | `CNAME` | **nemazať** — drží doménu |
