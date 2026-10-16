@@ -1224,3 +1224,56 @@ main > :is(.services,.process,.faq,.contact):first-child{padding-top:150px}
   .sec-h,.block-hd h2,.services-hd h1,.services-hd h2,.process-left h1,.process-left h2,.faq-left h1,.faq-left h2,.home-cta h2,.contact-left h1{font-size:clamp(1.6rem,7vw,2.2rem)}
   h1,h2,h3,.idx-t{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 }
+
+
+/* =====================================================================
+   Work (/referencie/, /en/work/): one case per project. Name and facts on
+   the left, what we did and the stack on the right, then the pictures as a
+   contact sheet: the opening (animated where the site moves), the phone,
+   and one or two further views.
+   ===================================================================== */
+.case-index{list-style:none;display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:36px;font-size:.92rem}
+.case-index a{color:var(--mu2);border-bottom:1px solid var(--bdr2);padding-bottom:3px;transition:color var(--dur-fast),border-color var(--dur-fast)}
+.case-index a:hover{color:var(--luma);border-color:var(--luma)}
+.cases{padding:0 var(--gut)}
+.case{max-width:var(--col);margin:0 auto;padding:110px 0;border-top:1px solid var(--bdr);scroll-margin-top:40px}
+.case:first-child{border-top:0;padding-top:64px}
+.case-hd{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 56px;align-items:start;margin-bottom:44px}
+.case-title h2{font-family:var(--ff);font-weight:800;font-size:clamp(2.2rem,5vw,4.6rem);line-height:.95;letter-spacing:-.05em}
+.case-kind{color:var(--mu2);font-size:1rem;margin-top:16px}
+.case-soon{display:block;margin-top:8px;color:var(--luma);font-size:.82rem}
+.case-text p{color:var(--mu2);font-size:1rem;line-height:1.75;font-weight:300;max-width:620px}
+.case-stack{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:24px 0;padding-top:18px;border-top:1px solid var(--bdr);font-size:.88rem;max-width:620px}
+.case-stack dt{color:var(--mu)}
+.case-stack dd{color:var(--tx)}
+.case-stack dd{display:flex;flex-wrap:wrap;row-gap:4px}
+.case-stack dd span{white-space:nowrap}
+.case-stack dd span + span::before{content:'/';margin:0 10px;color:var(--mu)}
+.case-link{font-size:.95rem;border-bottom:1px solid var(--bdr2);padding-bottom:3px;transition:color var(--dur-fast),border-color var(--dur-fast)}
+.case-link:hover{color:var(--luma);border-color:var(--luma)}
+
+.case-media{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.case-media figure{margin:0}
+.cm-main,.cm-phone,.cm-sub{position:relative;overflow:hidden;background:var(--sur);border:1px solid var(--bdr2)}
+.case-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
+.cm-main picture{display:block;height:100%}
+.cm-main{display:block;grid-column:1/10;aspect-ratio:16/10}
+.cm-main img{transition:transform var(--dur-slow) var(--ease)}
+.cm-main:hover img{transform:scale(1.015)}
+/* the phone takes the height of the opening shot beside it, not its own */
+.cm-phone{grid-column:10/13;grid-row:1}
+.cm-phone img{position:absolute;inset:0}
+.cm-sub{grid-column:span 6;aspect-ratio:16/10}
+.one-sub .cm-sub{grid-column:1/13;aspect-ratio:12/5}
+
+@media(max-width:900px){
+  .case{padding:80px 0}
+  .case-hd{grid-template-columns:1fr;margin-bottom:32px}
+  .case-media{grid-template-columns:1fr;gap:12px}
+  .cm-main,.cm-sub,.one-sub .cm-sub{grid-column:1;aspect-ratio:16/10}
+  .cm-phone{grid-column:1;grid-row:auto;width:min(300px,64%);justify-self:center;aspect-ratio:600/1298}
+}
+
+/* home: the way through to every project */
+.work-more{margin-top:72px;padding-top:28px;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.work-more p{color:var(--mu2);font-size:.95rem}

@@ -26,6 +26,8 @@ v oboch jazykoch.
 ## Stránky / Pages
 
 - [Domov](https://lumaweb.sk/) ([EN](https://lumaweb.sk/en/))
+- [Referencie](https://lumaweb.sk/referencie/) ([EN](https://lumaweb.sk/en/work/)):
+  živé weby, ktoré sme navrhli a postavili, s technológiami a odkazmi.
 - [Proces](https://lumaweb.sk/proces/) ([EN](https://lumaweb.sk/en/process/)):
   päť krokov od zadania po spustenie.
 - [O nás](https://lumaweb.sk/o-nas/) ([EN](https://lumaweb.sk/en/about/))

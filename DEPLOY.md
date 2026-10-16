@@ -70,6 +70,7 @@ neoptimalizuj domovskú späť na SEO výrazy, prišiel by si o obe.
 | `/` | `index.html` | svetlo nad konštrukciou (hero) + ako vzniká web + čo staviame + hotové weby + cena na mieru |
 | `/tvorba-webov/` | `tvorba-webov/index.html` | hlavná služba: weby, e-shopy, aplikácie |
 | `/sluzby/` | `sluzby/index.html` | SEO a GEO (nesie cielenie na „SEO služby Slovensko“) |
+| `/referencie/` | `referencie/index.html` | portfólio: šesť živých webov, pri každom popis, technológie, animácia alebo hlavný záber, mobil a ďalšie zábery (`img/work/`). EN `/en/work/` |
 | `/proces/` | `proces/index.html` | päť krokov |
 | `/cennik/` | `cennik/index.html` | **od 2026-10-16 len presmerovanie** na `/tvorba-webov/#cena` (`noindex`, nie je v sitemap). Cenník je zrušený, každý web sa naceňuje podľa zadania |
 | `/faq/` | `faq/index.html` | otázky (nesie FAQPage schema) |
@@ -89,7 +90,8 @@ je presmerovanie na `/en/web-development/#price`.
 | `fonts.css` + `fonts/*.woff2` | **self-hostované písma** — nikdy sem nevracaj `<link>` na `fonts.googleapis.com`, zásady ochrany údajov tvrdia, že web nevolá žiadnu tretiu stranu |
 | `ui.js` | mobilné menu, FAQ akordeón, odoslanie formulára, rok v päte, sekcia „ako vzniká web“, posun screenshotov, skrývanie lepkavého tlačidla |
 | `light.js` | svetlo v hero: kreslí skutočnú konštrukciu nadpisu (účiaria, výšky písmen, stĺpce, rozmery čítané z DOM) — načítava sa **len na domovských stránkach** |
-| `img/*.jpg` | screenshoty klientskych webov (agvservis.sk, metalcraft.sk) pre sekciu hotových webov |
+| `img/*.jpg` | celostránkové screenshoty (z-izol, metalcraft) pre sekciu hotových webov na domovskej stránke |
+| `img/work/*.webp` | zábery pre referencie; `*-hero.webp` sú animované slučky, `*-hero-still.webp` sa ukáže pri vypnutých animáciách |
 | `sitemap.xml`, `robots.txt` | SEO — sitemap má 16 URL s hreflang |
 | `CNAME` | **nemazať** — drží doménu |
 | `og-image.jpg` | OG náhľad (1.4 MB — pokojne skomprimovať) |
@@ -127,14 +129,14 @@ npx serve -l 8099          # potom http://localhost:8099
 
 ```bash
 for u in / /tvorba-webov/ /sluzby/ /proces/ /o-nas/ /faq/ /kontakt/ \
-         /ochrana-osobnych-udajov/ /obchodne-podmienky/ \
+         /ochrana-osobnych-udajov/ /obchodne-podmienky/ /referencie/ \
          /en/ /en/web-development/ /en/services/ /en/process/ /en/about/ \
-         /en/faq/ /en/contact/ /en/privacy/ /en/terms/; do
+         /en/faq/ /en/contact/ /en/privacy/ /en/terms/ /en/work/; do
   printf '%s  ' "$u"; curl -o /dev/null -s -w '%{http_code}\n' "https://lumaweb.sk$u"
 done
 ```
 
-Všetkých 18 musí vrátiť 200. Ak vráti 404 so stránkou „Site not found ·
+Všetkých 20 musí vrátiť 200. Ak vráti 404 so stránkou „Site not found ·
 GitHub Pages" → je to doména, viď vyššie.
 
 Po nasadení **znovu odošli sitemap v Search Console** — pribudli nové URL
