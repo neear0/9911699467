@@ -585,6 +585,10 @@ h1{font-family:var(--ff);font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line
 .sv-desc{color:var(--mu2);font-size:.84rem;line-height:1.65;font-weight:300}
 .sv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px}
 .sv-tag{background:rgba(255,255,255,.04);border:1px solid var(--bdr);padding:3px 10px;border-radius:100px;font-size:.68rem;color:var(--mu2)}
+/* an odd last item spans the row so the two-column grid has no hole */
+.sv-item.sv-wide{grid-column:1/-1}
+.sv-link{align-self:flex-start;margin-top:6px;padding:6px 0;font-size:.86rem;font-weight:500;color:var(--ac)}
+.sv-link:hover{text-decoration:underline}
 
 
 .pricing{padding:100px 64px;border-top:1px solid var(--bdr);background:var(--sur)}
@@ -1007,6 +1011,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .case-link{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;color:var(--ac);font-weight:500}
 .case-link::after{content:'\2197'}
 .case-link:hover{text-decoration:underline}
+.case-link-in{padding:8px 0}
 .case-link-in::after{content:'\2192'}
 /* media: the main shot on top, the extra shots and the phone in one row
    below. Column weights follow the aspect ratios (16:10 shots, 600:1298

@@ -20,11 +20,13 @@ v oboch jazykoch.
 
 - [Tvorba webov](https://lumaweb.sk/tvorba-webov/) ([EN](https://lumaweb.sk/en/web-development/)):
   prezentačné weby, e-shopy, webové aplikácie a landing pages.
-- [Weby pre obce](https://lumaweb.sk/weby-pre-obce/) ([EN](https://lumaweb.sk/en/municipal-websites/)):
-  webové sídla obcí a miest podľa vyhlášky č. 78/2020 Z. z. a WCAG 2.1 AA, s vlastným
-  dizajnom. Ukážka na vymyslenej obci: https://lumaweb.sk/ukazky/obec/
-- White label: weby pre agentúry a IT firmy, ktoré ich odovzdajú pod vlastnou značkou
-  (https://lumaweb.sk/tvorba-webov/#white-label).
+- [Weby pre verejnú správu](https://lumaweb.sk/weby-pre-verejnu-spravu/) ([EN](https://lumaweb.sk/en/public-sector-websites/)):
+  weby obcí, miest, samosprávnych krajov, úradov a nimi zriadených organizácií
+  (školy, knižnice, múzeá) podľa vyhlášky č. 78/2020 Z. z. a WCAG 2.1 AA, s vlastným
+  dizajnom. Ukážka webu vymyslenej obce: https://lumaweb.sk/ukazky/obec/
+- White label na všetky weby (prezentačné weby, e-shopy, aplikácie, landing pages,
+  weby pre verejnú správu): navrhneme a postavíme, agentúra alebo IT firma ich
+  odovzdá pod vlastnou značkou (https://lumaweb.sk/tvorba-webov/#white-label).
 - [SEO a GEO](https://lumaweb.sk/sluzby/) ([EN](https://lumaweb.sk/en/services/)):
   optimalizácia pre Google a pre odpovede AI vyhľadávačov.
 
