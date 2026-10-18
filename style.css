@@ -1007,6 +1007,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .case-link{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;color:var(--ac);font-weight:500}
 .case-link::after{content:'\2197'}
 .case-link:hover{text-decoration:underline}
+.case-link-in::after{content:'\2192'}
 /* media: the main shot on top, the extra shots and the phone in one row
    below. Column weights follow the aspect ratios (16:10 shots, 600:1298
    phone), so every item in the row comes out the same height. */
