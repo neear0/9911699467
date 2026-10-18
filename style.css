@@ -221,13 +221,12 @@ nav{
   .nav-right{gap:12px}
   .nav-cta{padding:8px 16px;font-size:.8rem;white-space:nowrap}
 }
-/* narrowest desktop band: the CTA goes, as it does below 640px, because the
-   Contact link in the row leads to the same page */
+/* narrowest desktop band: smaller logo and tighter links. The Contact
+   button stays, it is the only way to Contact in the bar. */
 @media(min-width:901px) and (max-width:1060px){
   .logo{font-size:1.3rem;gap:8px}
   .logo-mark{width:36px;height:36px}
   .nav-links{gap:16px}
-  .nav-cta{display:none}
 }
 
 /* Mobile menu trigger. Hidden on desktop; below 900px it is the only way to
@@ -863,11 +862,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 }
 
 @media(max-width:640px){
-  /* The bar carried logo + EN + a long CTA + the menu button, which together
-     are wider than a phone; the overflow pushed the menu button off screen and
-     clipped the page. The CTA is dropped here because the same action is
-     already one tap away in the menu and in the sticky bar at the bottom. */
-  .nav-cta{display:none}
+  /* The bar carries logo + EN + the short Contact button + the menu button.
+     The button is not in the menu, so it stays; it gets the same finger-sized
+     height as the language switch. */
+  .nav-cta{min-height:36px;padding:0 14px}
   .logo{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
   /* Touch targets: these are standalone controls, not links inside a
@@ -1042,4 +1040,25 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   .case,.case-feature{padding:14px;border-radius:20px}
   .case-media{gap:8px}
   .cm-phone,.cm-sub{border-radius:8px}
+}
+
+/* phones: the bar now always carries the Contact button next to the logo,
+   EN and the menu button, so the pieces sit closer and the logo shrinks a
+   step on narrow screens instead of being cut off */
+@media(max-width:640px){
+  .nav-right{gap:8px}
+  .nav-cta{padding:0 12px}
+}
+@media(max-width:400px){
+  .logo{font-size:1.12rem;gap:7px}
+  .logo-mark{width:30px;height:30px}
+}
+@media(max-width:360px){
+  .logo{font-size:.98rem;gap:6px}
+  .logo-mark{width:26px;height:26px}
+  .nav-right{gap:6px}
+  .nav-cta{padding:0 10px;font-size:.76rem}
+}
+@media(max-width:340px){
+  .logo-mark{display:none}
 }

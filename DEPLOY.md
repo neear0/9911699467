@@ -109,9 +109,11 @@ grep -rL "nav-toggle" --include="*.html" .     # len obe coming-soon.html
 ### Mobilné menu
 
 Pod 900 px sa vodorovná navigácia skryje a jediná cesta na ostatné stránky je
-tlačidlo `.nav-toggle`. Pod 640 px sa navyše skrýva `.nav-cta`, lebo bar sa
-inak na telefón nezmestil a vytláčal tlačidlo menu mimo obrazovku. Konverznú
-cestu drží lepkavá lišta dole plus položka Kontakt v menu.
+tlačidlo `.nav-toggle`. Od 2026-10-18 je Kontakt len tlačidlo `.nav-cta`
+(položka Kontakt v zozname odkazov nie je), preto sa `.nav-cta` neskrýva na
+žiadnej šírke. Aby sa bar zmestil na telefón, pod 640 px sa zmenšia rozostupy
+a pod 400 / 360 px logo; pod 340 px sa skryje ikonka loga. Overené na 320 až
+1440 px bez orezania loga a bez pretečenia.
 
 ### Cesty sú absolútne
 
