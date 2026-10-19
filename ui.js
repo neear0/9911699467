@@ -181,6 +181,35 @@ window.submitForm = submitForm;
 })();
 
 
+/* Small shots open full size in a dialog. Without JS the link simply opens
+   the image file. */
+(function initZoom() {
+  const links = document.querySelectorAll('a.cm-zoom');
+  if (!links.length || typeof HTMLDialogElement === 'undefined') return;
+  const dialog = document.createElement('dialog');
+  dialog.className = 'zoom';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.className = 'zoom-close';
+  close.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Close' : 'Zavrieť');
+  close.textContent = '×';
+  const img = document.createElement('img');
+  dialog.append(img, close);
+  document.body.append(dialog);
+  links.forEach((a) => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const thumb = a.querySelector('img');
+    img.src = a.href;
+    img.alt = thumb ? thumb.alt : '';
+    dialog.showModal();
+  }));
+  // a click on the backdrop or the button closes it, Escape is handled by the dialog itself
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog || e.target === close) dialog.close();
+  });
+})();
+
+
 /* The sticky mobile CTA repeats what the hero and the footer already offer,
    so it steps aside while either of them is on screen. */
 (function initStickyCta() {

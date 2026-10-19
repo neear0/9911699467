@@ -1035,6 +1035,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .case-feature .case-body{padding:0 14px 0 0}
 .case-feature .case-body h2{font-size:clamp(1.7rem,3vw,2.3rem)}
 .case-feature .case-desc{font-size:.93rem}
+/* a single case across the whole row: the shots get twice the width of a
+   feature card so the text in them reads, the copy follows below */
+.case-wide{grid-column:1/-1;padding:26px}
+.case-wide .case-body{max-width:760px}
+.case-wide .case-body h2{font-size:clamp(1.7rem,3vw,2.3rem)}
+.cm-zoom{display:block;cursor:zoom-in}
+.zoom{margin:auto;padding:0;border:0;background:transparent;max-width:96vw;max-height:94vh;overflow:visible}
+.zoom::backdrop{background:rgba(4,4,12,.9)}
+.zoom img{display:block;width:auto;height:auto;max-width:96vw;max-height:94vh;border-radius:12px}
+.zoom-close{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:1px solid var(--bdr2);background:rgba(6,6,15,.85);color:var(--tx);font-size:1.5rem;line-height:1;cursor:pointer}
+@media(max-width:640px){
+  .case-wide .case-media.s2{grid-template-columns:minmax(0,1fr)}
+  .case-wide .cm-phone{width:50%;justify-self:center}
+}
 @media(max-width:900px){
   .cases{padding:50px 24px 70px;grid-template-columns:1fr;gap:20px}
   .case,.case-feature{padding:18px;gap:20px}
