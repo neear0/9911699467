@@ -1020,7 +1020,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .case-media.s2{grid-template-columns:minmax(0,16fr) minmax(0,16fr) minmax(0,4.62fr)}
 .case-media.s1{grid-template-columns:minmax(0,16fr) minmax(0,4.62fr)}
 .case-media.s0{grid-template-columns:minmax(0,16fr) minmax(0,4.62fr)}
-.case-media.s1 .cm-main,.case-media.s2 .cm-main{grid-column:1/-1}
+.case-media.s3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.case-media.s1 .cm-main,.case-media.s2 .cm-main,.case-media.s3 .cm-main{grid-column:1/-1}
 .case-media figure{margin:0}
 .cm-main,.cm-phone,.cm-sub{position:relative;overflow:hidden;background:var(--sur2);border:1px solid var(--bdr);border-radius:14px}
 .cm-phone,.cm-sub{border-radius:10px}
