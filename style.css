@@ -73,7 +73,7 @@
 @font-face {
   font-family: 'Syne';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400 800;
   font-display: swap;
   src: url(/fonts/8vIH7w4qzmVxm25L9Hz_.woff2) format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
@@ -83,31 +83,13 @@
 @font-face {
   font-family: 'Syne';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400 800;
   font-display: swap;
   src: url(/fonts/8vIH7w4qzmVxm2BL9A.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* latin-ext */
-@font-face {
-  font-family: 'Syne';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url(/fonts/8vIH7w4qzmVxm25L9Hz_.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 
-/* latin */
-@font-face {
-  font-family: 'Syne';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url(/fonts/8vIH7w4qzmVxm2BL9A.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -1103,3 +1085,32 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media(max-width:340px){
   .logo-mark{display:none}
 }
+
+/* phones, 2026-11: the scrolled bar (nav.sc) kept the 24px side padding of the
+   tablet band, and between 361 and 400px the logo was a step too big, so the
+   logo got cut to "Luma Wel". Measured: it now fits at every width from 320 up. */
+@media(max-width:480px){
+  nav.sc{padding:8px 16px}
+}
+@media(max-width:400px){
+  .logo{font-size:.98rem;gap:6px}
+  .logo-mark{width:28px;height:28px}
+}
+@media(max-width:360px){
+  nav.sc{padding:7px 12px}
+  .logo-mark{width:26px;height:26px}
+}
+@media(max-width:640px){
+  /* finger-sized without taking width from the logo */
+  .logo{min-height:40px}
+  .lang-switch{min-width:36px;justify-content:center}
+}
+
+/* browser surfaces in the site's own colors (2026-11-02) */
+::selection{background:var(--ac2);color:#fff}
+html{-webkit-tap-highlight-color:transparent}
+
+/* keyboard focus: one designed ring for every link, button and field */
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+/* hidden sticky button is also out of the tab order */
+.sticky-cta.away{visibility:hidden;transition:opacity .3s,transform .3s,visibility 0s .3s}

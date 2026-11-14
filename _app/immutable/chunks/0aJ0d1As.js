@@ -1,0 +1,1 @@
+import{G as e,K as t,O as n,R as r,S as i,W as a,u as o,x as s}from"./DM5ObBjz.js";function c(c,l){t(l,!0);let u=a(()=>JSON.stringify(l.data).replaceAll(`<`,`\\u003c`));var d=i(),f=r(d);o(f,()=>`<script type="application/ld+json">${n(u)}<\/script>`),s(c,d),e()}export{c as t};

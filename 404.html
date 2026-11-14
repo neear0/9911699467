@@ -1,124 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sk">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stránka sa nenašla | LumaWeb</title>
-  <meta name="description" content="Táto stránka na lumaweb.sk neexistuje alebo sa presunula. Prejdite na tvorbu webov, SEO a GEO služby alebo kontakt."/>
-  <meta name="robots" content="noindex, follow"/>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#06060f" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<!-- the two latin faces every page renders with: preloaded so the swap from
+		     the fallback happens sooner and moves the text less -->
+		<link rel="preload" href="/fonts/rP2Hp2ywxg089UriCZOIHQ.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/8vIH7w4qzmVxm2BL9A.woff2" as="font" type="font/woff2" crossorigin />
+		<!-- style.css ships byte for byte like the original, from static/: the bundler minifier would rewrite rules (drops -webkit-appearance, folds colors) -->
+		<link rel="stylesheet" href="/style.css" />
+		<link href="/_app/immutable/entry/start.BjSKKJrc.js" rel="modulepreload">
+		<link href="/_app/immutable/entry/payload.DSmR2FwN.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CRzLMJPS.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BwXyLFLt.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Bo3qS73v.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DM5ObBjz.js" rel="modulepreload">
+		<link href="/_app/immutable/entry/app.DaMraLrW.js" rel="modulepreload">
+		<link href="/_app/immutable/nodes/0.CYepVNxY.js" rel="modulepreload">
+		
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+			<script>
+				{
+					__sveltekit_u6dyah = {
+						base: "",
+						version: "1794652352255"
+					};
 
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+					const element = document.currentScript.parentElement;
 
-  <!-- the two latin faces every page renders with: preloaded so the swap from
-       the fallback happens sooner and moves the text less -->
-  <link rel="preload" href="/fonts/rP2Hp2ywxg089UriCZOIHQ.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/fonts/8vIH7w4qzmVxm2BL9A.woff2" as="font" type="font/woff2" crossorigin/>
-  <link rel="preload" href="/style.css" as="style"/>
-  <link rel="stylesheet" href="/style.css"/>
-</head>
-<body>
-
-<header>
-<nav id="nav" aria-label="Hlavná navigácia">
-  <a href="/" class="logo" aria-label="LumaWeb - Domov">
-    <div class="logo-mark">
-      <img src="/logo-128.png" alt="LumaWeb logo" width="54" height="54" decoding="async"/>
-    </div>
-    Luma<em>Web</em>
-  </a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="/tvorba-webov/">Tvorba webov</a></li>
-    <li><a href="/referencie/">Referencie</a></li>
-    <li><a href="/proces/">Proces</a></li>
-    <li><a href="/sluzby/">SEO a GEO</a></li>
-    <li><a href="/faq/">FAQ</a></li>
-    <li><a href="/o-nas/">O nás</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="/en/" class="lang-switch" aria-label="Switch to English">EN</a>
-    <a href="/kontakt/" class="nav-cta">Kontakt</a>
-    <button class="nav-toggle" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="nav-links">
-      <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
-      <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
-    </button>
-  </div>
-</nav>
-</header>
-<main>
-
-<section class="page-head">
-  <div class="page-head-inner">
-    <div class="s-tag">Chyba 404</div>
-    <h1>Táto stránka tu nie je</h1>
-    <p>Buď sa presunula, alebo v adrese vznikol preklep. Nižšie je všetko, čo hľadáte pravdepodobne najskôr.</p>
-    <p><em>This page doesn’t exist or has moved. The links below cover everything on the site. <a href="/en/">English version here</a>.</em></p>
-  </div>
-</section>
-
-
-<section class="block">
-  <div class="block-inner">
-    <div class="block-hd">
-      <div class="s-tag">Kam ďalej</div>
-      <h2>Skúste niektorú z týchto</h2>
-      <p>Ak ste sem prišli z odkazu, ktorý niekde na našom webe nefunguje, dajte nám prosím vedieť a opravíme to.</p>
-    </div>
-    <div class="tiles">
-      <div class="tile">
-        <h3><a href="/tvorba-webov/">Tvorba webov</a></h3>
-        <p>Prezentačné weby, e-shopy, webové aplikácie a landing pages na mieru.</p>
-      </div>
-      <div class="tile">
-        <h3><a href="/sluzby/">SEO a GEO</a></h3>
-        <p>Technický audit, obsah, link building a viditeľnosť v AI odpovediach.</p>
-      </div>
-      <div class="tile">
-        <h3><a href="/proces/">Proces</a></h3>
-        <p>Ako prebieha spolupráca od prvej správy po spustenie webu.</p>
-      </div>
-      <div class="tile">
-        <h3><a href="/kontakt/">Kontakt</a></h3>
-        <p>Napíšte nám, čo potrebujete. Ozveme sa do 24 hodín.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="home-cta">
-  <div class="home-cta-inner">
-    <h2>Alebo rovno napíšte</h2>
-    <p>Povedzte nám, čo ste hľadali. Nájdeme to za vás, prípadne rovno odpovieme.</p>
-    <div class="home-cta-btns">
-      <a href="/kontakt/" class="btn-primary">Prejsť na kontakt</a>
-      <a href="/" class="btn-ghost">Späť na úvod</a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div>
-    <div class="footer-brand">Luma<em>Web</em></div>
-    <a href="https://voidsolutions.eu" target="_blank" rel="noopener" class="footer-sub footer-vs">powered by void<span class="vs-sol">solutions</span></a>
-  </div>
-  <div class="footer-social">
-    <a href="https://www.linkedin.com/company/lumaweb-slovakia/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-    </a>
-    <a href="https://www.instagram.com/lumaweb_slovakia" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1"/></svg>
-    </a>
-    <a href="https://www.facebook.com/people/Lumaweb/61593587116990/" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-    </a>
-  </div>
-  <div class="footer-copy">&copy; <span id="yr"></span> AQUASHIELD s. r. o. &middot; IČO 52 880 516 &middot; <a href="/ochrana-osobnych-udajov/">Ochrana osobných údajov</a> &middot; <a href="/obchodne-podmienky/">Obchodné podmienky</a></div>
-</footer>
-
-<script src="/ui.js" defer></script>
-
-</body>
+					import("/_app/immutable/entry/start.BjSKKJrc.js").then(async (kit) => {
+						kit.init(__sveltekit_u6dyah);
+						const app = await import("/_app/immutable/entry/app.DaMraLrW.js");
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+	</body>
 </html>

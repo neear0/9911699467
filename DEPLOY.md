@@ -2,12 +2,15 @@
 
 ## Zostava
 
-- **Repo:** https://github.com/neear0/9911699467 (branch `main`)
-- **Hosting:** GitHub Pages — servíruje priamo obsah `main`, žiadny build, žiadny CI
+- **Repo:** https://github.com/neear0/9911699467 (branch `main`), obsahuje **len hotový build**
+- **Zdroj:** SvelteKit projekt `C:\Users\Zemak\Desktop\biznis\moje\weby\lumaweb-svelte-v2` (adapter-static, všetko predrenderované)
+- **Hosting:** GitHub Pages, servíruje priamo obsah `main`, žiadny CI
 - **Doména:** lumaweb.sk (+ www)
-- **Stack:** čisté HTML/CSS/JS, žiadny framework, žiadne `npm install`
+- **Pôvodná ručne písaná HTML verzia** je v git histórii pod tagom `pre-svelte-v2` (nasadená do 14. 11. 2026)
 
-Čokoľvek pushneš do `main`, je za ~1 minútu online. Nič sa nekompiluje.
+Od 14. 11. 2026 sa **súbory v tomto repe ručne neupravujú**. Zmeny sa robia v
+`lumaweb-svelte-v2`, potom build a skopírovanie sem (viď nižšie). Čokoľvek
+pushneš do `main`, je za ~1 minútu online.
 
 ## Ako je zapojená doména (TOTO SI ZAPAMÄTAJ)
 
@@ -41,90 +44,30 @@ Presne toto sa stalo 26. 7. 2026 (commity `acebb14` + `8908f2c`).
 
 ## Ako deployovať zmeny
 
-Nepoužívaj „Add files via upload" cez web GitHubu — práve tak sa stratil `en/` adresár
+Nepoužívaj „Add files via upload“ cez web GitHubu, práve tak sa stratil `en/` adresár
 aj `CNAME`. Rob to cez git:
 
 ```bash
-cd C:\Users\Zemak\Desktop\biznis\moje\lumaweb-main
+cd C:/Users/Zemak/Desktop/biznis/moje/weby/lumaweb-svelte-v2
+npm run check && npm run build      # 0 chýb, build/ hotový
+npm run serve                       # náhľad ako na GitHub Pages: http://localhost:8100
 
-git pull                        # vždy najprv stiahni aktuálny stav
-# ... uprav súbory ...
+cd ../lumaweb-main
+git pull
+git ls-files | grep -vxE "CNAME|DEPLOY.md" | xargs rm -f   # starý build preč
+cp -r ../lumaweb-svelte-v2/build/. .                        # nový build dnu (vrátane .nojekyll a CNAME)
 git add -A
-git status                      # POZRI SA, či nemažeš niečo omylom
+git status                          # POZRI SA, či nemažeš CNAME ani .nojekyll
 git commit -m "popis zmeny"
 git push
 ```
 
-Pred pushom skontroluj, že `git status` **nehlási zmazaný `CNAME`** ani `en/`.
+`.nojekyll` musí ostať: bez neho GitHub Pages zahodí priečinok `_app/` (Jekyll ignoruje
+cesty začínajúce podčiarkovníkom) a web ostane bez JS. `CNAME` a `.nojekyll` sú v
+`static/` zdrojového projektu, takže ich build vždy obsahuje.
 
-## Štruktúra
-
-Od 27. 7. 2026 to **nie je one-page** — každá sekcia má vlastnú URL.
-
-Od 14. 8. 2026 vedie web **tvorbu webov** ako hlavnú službu, SEO a GEO je druhý
-pilier. Frázu „SEO služby Slovensko“ prevzala `/sluzby/` z domovskej stránky —
-neoptimalizuj domovskú späť na SEO výrazy, prišiel by si o obe.
-
-| URL | Súbor | Obsah |
-|---|---|---|
-| `/` | `index.html` | hero + dva piliere + porovnanie SEO vs. reklama + prístup (pôvodný dizajn, rollback 2026-10-16) |
-| `/tvorba-webov/` | `tvorba-webov/index.html` | hlavná služba: weby, e-shopy, aplikácie |
-| `/sluzby/` | `sluzby/index.html` | SEO a GEO (nesie cielenie na „SEO služby Slovensko“) |
-| `/referencie/` | `referencie/index.html` | portfólio: osem webov (vrátane voidsolutions a samotného LumaWeb, oba cez celú šírku, prvý a posledný), ostatné ako karty po dvoch vedľa seba. Pri každom krátky technický popis, technológie, hlavný záber (MP4 slučka, animovaný WebP alebo foto), mobil a ďalšie zábery (`img/work/`). MP4 sa načíta až pri zobrazení (`ui.js`), pri obmedzenom pohybe ostáva len poster. EN `/en/work/` |
-| `/proces/` | `proces/index.html` | päť krokov |
-| `/cennik/` | `cennik/index.html` | **od 2026-10-16 len presmerovanie** na `/tvorba-webov/#cena` (`noindex`, nie je v sitemap). Cenník je zrušený, každý web sa naceňuje podľa zadania |
-| `/faq/` | `faq/index.html` | otázky (nesie FAQPage schema) |
-| `/kontakt/` | `kontakt/index.html` | kontakt + formulár |
-| `/ochrana-osobnych-udajov/` | `ochrana-osobnych-udajov/index.html` | GDPR, povinné kvôli formuláru |
-
-Anglická vetva je zrkadlom pod `/en/`: `/en/`, `/en/web-development/`,
-`/en/services/`, `/en/process/`, `/en/faq/`, `/en/about/`, `/en/contact/`,
-`/en/privacy/`. Slugy sú anglické, takže hreflang páruje 1:1. `/en/pricing/`
-je presmerovanie na `/en/web-development/#price`.
-
-| Ostatné | Čo to je |
-|---|---|
-| `404.html` | vlastná 404, GitHub Pages ju servuje pre všetky neznáme cesty, preto je dvojjazyčná a `noindex` |
-| `coming-soon.html`, `en/coming-soon.html` | placeholder pre socky, `noindex` |
-| `style.css` | všetky štýly (zdieľané všetkými stránkami) |
-| `fonts.css` + `fonts/*.woff2` | **self-hostované písma** — nikdy sem nevracaj `<link>` na `fonts.googleapis.com`, zásady ochrany údajov tvrdia, že web nevolá žiadnu tretiu stranu |
-| `ui.js` | mobilné menu, FAQ akordeón, odoslanie formulára, rok v päte, skrývanie lepkavého tlačidla |
-| `hero-canvas.js` | animácia pozadia v hero (pôvodný hero, vrátený 2026-10-16) — načítava sa **len na domovských stránkach** |
-| `img/work/*.webp` | zábery pre referencie; `*-hero.webp` sú animované slučky, `*-hero-still.webp` sa ukáže pri vypnutých animáciách |
-| `sitemap.xml`, `robots.txt` | SEO — sitemap má 16 URL s hreflang |
-| `CNAME` | **nemazať** — drží doménu |
-| `og-image.jpg` | OG náhľad (1.4 MB — pokojne skomprimovať) |
-
-### ⚠️ Navigácia a pätička sú v každom súbore zvlášť
-
-Nie je tu žiadny build ani šablóny. Keď meníš odkaz v navigácii alebo čokoľvek
-v pätičke, **musíš to spraviť v každom zo 17 súborov s navigáciou**. Kontrola,
-či niečo nezostalo pozadu:
-
-```bash
-grep -rc "nav-links" --include=index.html .    # každý musí vrátiť 1
-grep -rL "nav-toggle" --include="*.html" .     # len obe coming-soon.html
-```
-
-### Mobilné menu
-
-Pod 900 px sa vodorovná navigácia skryje a jediná cesta na ostatné stránky je
-tlačidlo `.nav-toggle`. Od 2026-10-18 je Kontakt len tlačidlo `.nav-cta`
-(položka Kontakt v zozname odkazov nie je), preto sa `.nav-cta` neskrýva na
-žiadnej šírke. Aby sa bar zmestil na telefón, pod 640 px sa zmenšia rozostupy
-a pod 400 / 360 px logo; pod 340 px sa skryje ikonka loga. Overené na 320 až
-1440 px bez orezania loga a bez pretečenia.
-
-### Cesty sú absolútne
-
-Odkazy aj assety idú cez `/` (`/style.css`, `/sluzby/`). To znamená, že
-**otvorenie súboru priamo z disku nebude fungovať** — nenačíta sa CSS ani
-prelinkovanie. Na lokálny náhľad si spusť server:
-
-```bash
-cd C:\Users\Zemak\Desktop\biznis\moje\lumaweb-main
-npx serve -l 8099          # potom http://localhost:8099
-```
+Štruktúra stránok, komponenty a poznámky k dizajnu sú v README zdrojového projektu.
+Navigácia a pätička sú v jednom komponente, už sa needitujú v každom súbore zvlášť.
 
 ## Kontroly po deployi
 
