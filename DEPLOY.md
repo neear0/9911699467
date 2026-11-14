@@ -3,14 +3,14 @@
 ## Zostava
 
 - **Repo:** https://github.com/neear0/9911699467 (branch `main`), obsahuje **len hotový build**
-- **Zdroj:** SvelteKit projekt `C:\Users\Zemak\Desktop\biznis\moje\weby\lumaweb-svelte-v2` (adapter-static, všetko predrenderované)
+- **Zdroj:** súkromný repozitár https://github.com/neear0/lumaweb, lokálne `C:/Users/Zemak/Desktop/biznis/moje/weby/lumaweb-svelte-v2` (SvelteKit, adapter-static, všetko predrenderované)
 - **Hosting:** GitHub Pages, servíruje priamo obsah `main`, žiadny CI
 - **Doména:** lumaweb.sk (+ www)
-- **Pôvodná ručne písaná HTML verzia** je v git histórii pod tagom `pre-svelte-v2` (nasadená do 14. 11. 2026)
+- **Pôvodná ručne písaná HTML verzia** je v git histórii pod tagom `pre-svelte-v2` (nasadená do 14. 11. 2026) a zbalená v `moje/archiv/lumaweb/`
 
-Od 14. 11. 2026 sa **súbory v tomto repe ručne neupravujú**. Zmeny sa robia v
-`lumaweb-svelte-v2`, potom build a skopírovanie sem (viď nižšie). Čokoľvek
-pushneš do `main`, je za ~1 minútu online.
+Od 14. 11. 2026 sa **súbory v tomto repe ručne neupravujú**. Zmeny sa robia v zdrojovom
+projekte a nasadzujú príkazom `npm run deploy` (viď nižšie). Lokálny klon tohto repa je
+`lumaweb-svelte-v2/.deploy/`. Čokoľvek pushneš do `main`, je za ~1 minútu online.
 
 ## Ako je zapojená doména (TOTO SI ZAPAMÄTAJ)
 
@@ -45,22 +45,16 @@ Presne toto sa stalo 26. 7. 2026 (commity `acebb14` + `8908f2c`).
 ## Ako deployovať zmeny
 
 Nepoužívaj „Add files via upload“ cez web GitHubu, práve tak sa stratil `en/` adresár
-aj `CNAME`. Rob to cez git:
+aj `CNAME`. Nasadzuje sa zo zdrojového projektu:
 
 ```bash
 cd C:/Users/Zemak/Desktop/biznis/moje/weby/lumaweb-svelte-v2
-npm run check && npm run build      # 0 chýb, build/ hotový
-npm run serve                       # náhľad ako na GitHub Pages: http://localhost:8100
-
-cd ../lumaweb-main
-git pull
-git ls-files | grep -vxE "CNAME|DEPLOY.md" | xargs rm -f   # starý build preč
-cp -r ../lumaweb-svelte-v2/build/. .                        # nový build dnu (vrátane .nojekyll a CNAME)
-git add -A
-git status                          # POZRI SA, či nemažeš CNAME ani .nojekyll
-git commit -m "popis zmeny"
-git push
+npm run serve                          # voliteľne: náhľad buildu ako na GitHub Pages, http://localhost:8100
+npm run deploy -- "čo sa zmenilo"      # check + build + skopírovanie do .deploy/ + commit + push
 ```
+
+Skript nahradí všetky súbory v tomto repe obsahom `build/` okrem `CNAME` a `DEPLOY.md`
+a zastaví sa pred commitom, keby mal zmiznúť `CNAME` alebo `.nojekyll`.
 
 `.nojekyll` musí ostať: bez neho GitHub Pages zahodí priečinok `_app/` (Jekyll ignoruje
 cesty začínajúce podčiarkovníkom) a web ostane bez JS. `CNAME` a `.nojekyll` sú v
