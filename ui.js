@@ -181,31 +181,98 @@ window.submitForm = submitForm;
 })();
 
 
-/* Small shots open full size in a dialog. Without JS the link simply opens
-   the image file. */
+/* Shots open full size in a dialog. All zoomable shots of one project sit
+   side by side in a scroll-snapping track, so the visitor can swipe, scroll
+   (the wheel pages sideways), use the arrow keys or the buttons to move
+   between them. Without JS the link simply opens the image file. */
 (function initZoom() {
-  const links = document.querySelectorAll('a.cm-zoom');
+  const links = [...document.querySelectorAll('a.cm-zoom')];
   if (!links.length || typeof HTMLDialogElement === 'undefined') return;
+  const en = document.documentElement.lang === 'en';
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const dialog = document.createElement('dialog');
   dialog.className = 'zoom';
-  const close = document.createElement('button');
-  close.type = 'button';
-  close.className = 'zoom-close';
-  close.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Close' : 'Zavrieť');
-  close.textContent = '×';
-  const img = document.createElement('img');
-  dialog.append(img, close);
+  dialog.setAttribute('aria-label', en ? 'Photos' : 'Fotky');
+  const track = document.createElement('div');
+  track.className = 'zoom-track';
+  const button = (cls, label, text) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = cls;
+    b.setAttribute('aria-label', label);
+    b.textContent = text;
+    return b;
+  };
+  const prev = button('zoom-nav zoom-prev', en ? 'Previous photo' : 'Predchádzajúca fotka', '‹');
+  const next = button('zoom-nav zoom-next', en ? 'Next photo' : 'Ďalšia fotka', '›');
+  const close = button('zoom-close', en ? 'Close' : 'Zavrieť', '×');
+  const count = document.createElement('p');
+  count.className = 'zoom-count';
+  count.setAttribute('aria-live', 'polite');
+  dialog.append(track, prev, next, count, close);
   document.body.append(dialog);
+
+  let n = 0;
+  const at = () => Math.round(track.scrollLeft / (track.clientWidth || 1));
+  const go = (i, smooth) => {
+    i = Math.max(0, Math.min(n - 1, i));
+    track.scrollTo({ left: i * track.clientWidth, behavior: smooth && !reduced ? 'smooth' : 'auto' });
+  };
+  const update = () => {
+    const i = at();
+    count.textContent = n > 1 ? (i + 1) + ' / ' + n : '';
+    prev.hidden = next.hidden = n < 2;
+    prev.disabled = i <= 0;
+    next.disabled = i >= n - 1;
+  };
+
   links.forEach((a) => a.addEventListener('click', (e) => {
     e.preventDefault();
-    const thumb = a.querySelector('img');
-    img.src = a.href;
-    img.alt = thumb ? thumb.alt : '';
+    const box = a.closest('article, section');
+    const group = links.filter((l) => l.closest('article, section') === box);
+    track.replaceChildren(...group.map((l) => {
+      const slide = document.createElement('figure');
+      slide.className = 'zoom-slide';
+      const img = document.createElement('img');
+      const thumb = l.querySelector('img');
+      img.src = l.href;
+      img.alt = thumb ? thumb.alt : '';
+      img.decoding = 'async';
+      slide.append(img);
+      return slide;
+    }));
+    n = group.length;
     dialog.showModal();
+    go(group.indexOf(a), false);
+    update();
   }));
-  // a click on the backdrop or the button closes it, Escape is handled by the dialog itself
+
+  let tick = 0;
+  track.addEventListener('scroll', () => {
+    if (!tick) tick = requestAnimationFrame(() => { tick = 0; update(); });
+  }, { passive: true });
+  prev.addEventListener('click', () => go(at() - 1, true));
+  next.addEventListener('click', () => go(at() + 1, true));
+  dialog.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      go(at() + (e.key === 'ArrowRight' ? 1 : -1), true);
+    }
+  });
+  // a vertical wheel turns one photo per gesture instead of scrolling the page behind
+  let wheelLock = 0;
+  dialog.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+    e.preventDefault();
+    const now = Date.now();
+    if (now < wheelLock) return;
+    wheelLock = now + 450;
+    go(at() + (e.deltaY > 0 ? 1 : -1), true);
+  }, { passive: false });
+  // a click beside the photo or on the button closes it, Escape is handled by the dialog itself
   dialog.addEventListener('click', (e) => {
-    if (e.target === dialog || e.target === close) dialog.close();
+    const t = e.target;
+    if (t === dialog || t === close || t === track || t.classList.contains('zoom-slide')) dialog.close();
   });
 })();
 
