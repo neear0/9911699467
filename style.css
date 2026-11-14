@@ -999,6 +999,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .case-body{padding:0 6px 6px}
 .case-body h2{font-family:var(--ff);font-size:clamp(1.35rem,2.2vw,1.75rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
 .case-kind{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);flex-wrap:wrap}
+.case-kind .lc{text-transform:none;letter-spacing:.04em}
 .case-kind::before{content:'';width:16px;height:1px;background:var(--ac)}
 .case-soon,.case-own{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.62rem;letter-spacing:.08em}
 .case-soon{background:rgba(232,184,75,.1);border:1px solid rgba(232,184,75,.25);color:var(--gold)}
